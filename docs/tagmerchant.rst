@@ -98,7 +98,7 @@ just leave it out if you choose not to include the data.
      - integer
      - Required. The number of this product purchased in this order.
 
-Full Example (remember, replace ACCOUNT NAME with your account name)
+Full Example (remember, replace "ACCOUNT NAME" with your Narrativ account name)
 
 What you see below is just an example. You cannot copy and paste it as is. Insert the check out
 information from your own page into our data layer using Javascript before loading the Narrativ tag.
@@ -148,7 +148,7 @@ information from your own page into our data layer using Javascript before loadi
 Adding Information for the Page View Tag
 ------------
 
-The page view tag goes on every page except the checkout page. Remember to change ACCOUNT NAME to your account name.
+The page view tag goes on every page except the checkout page. Remember to change "ACCOUNT NAME" to your Narrativ account name.
 
 *window.BAMX_EVENT_DATA*
 
@@ -191,6 +191,80 @@ information into our data layer using Javascript before loading the Narrativ tag
         }("ACCOUNT NAME"));
     </script>
     <!-- end NARRATIV jstag -->
+
+Google Tag Manager Walkthrough
+------------
+
+Below is a walkthrough for implementing the Narrativ pixel using a "Custom HTML" tag in Google Tag Manger.
+Start by navigating to your Google Tag Manager Dashboard.
+
+.. image:: _static/pixel_implementation_screenshots/1_tap_configuration.png
+
+- Select "Tap Configuration" to begin making a new pixel.
+
+.. image:: _static/pixel_implementation_screenshots/2_choose_custom_html.png
+
+- Select "Custom HTML" to open a text field to copy and paste the above code. Make sure you replace "ACCOUNT NAME" with your Narrativ account name.
+
+.. image:: _static/pixel_implementation_screenshots/3_enter_tag_html.png
+
+- Enter the code from the "Page View Tag" snippet. Replace the content of "BAMX_EVENT_DATA" with the relevant data from your data layer.
+
+.. image:: _static/pixel_implementation_screenshots/4_select_trigger.png
+
+- Select the correct trigger for this "Page View Tag."
+
+.. image:: _static/pixel_implementation_screenshots/5_final_product.png
+
+- Make sure the tag is named accurately and has the correct trigger.
+
+.. image:: _static/pixel_implementation_screenshots/checkout_1_open_configuration.png
+
+- Create another tag and open the text field.
+
+.. image:: _static/pixel_implementation_screenshots/checkout_3_confirm_code_product_info.png
+
+- This example is using a dummy data layer. You will have to customize “var purchased” to point at how you access the order content in your data layer.
+
+.. image:: _static/pixel_implementation_screenshots/checkout_3_confirm_code_minimum_purchased.png
+
+- If you do not have checkout product information available in your data layer then use “var minimumPurchased” instead and set it equal to the price of the checkout.
+
+.. image:: _static/pixel_implementation_screenshots/checkout_4_add_trigger.png
+
+- Add a trigger for this tag.
+
+.. image:: _static/pixel_implementation_screenshots/checkout_5_add_confirmation_page_trigger.png
+
+- If you do not have a preset trigger for checkout pages then you will have to create one.
+
+.. image:: _static/pixel_implementation_screenshots/checkout_5.1_add_confirmation_rules.png
+
+- The above example has a series of triggers based off of common URL types for checkout pages. (ie www.narrativ.com/checkout/ will trigger the top option). Replace checkout with whatever word your site uses on checkout pages. You only need one trigger.
+
+.. image:: _static/pixel_implementation_screenshots/checkout_6_double_check.png
+
+- Double check the name, code, and trigger.
+
+.. image:: _static/pixel_implementation_screenshots/submit_1_tag_confirmation.png
+
+- Make sure that the tag(s) are showing up in the "Tag" tab.
+
+.. image:: _static/pixel_implementation_screenshots/submit_2_review.png
+
+- Preview the changes made and fix any errors that pop up in the window.
+
+.. image:: _static/pixel_implementation_screenshots/submit_3_submit_changes.png
+
+- Submit your changes (this step is not final)
+
+.. image:: _static/pixel_implementation_screenshots/submit_4_title_the_changes.png
+
+- Double check everything you worked on is in this submission. Name the submission something clear so that you can go back and debug any issues later.
+
+You did it!!
+
+If you have any issues during this process then reach out to your Narrativ contact or hello@narrativ.com
 
 .. _Google category: https://support.google.com/merchants/answer/6324436?hl=en
 .. _ISO 4217: https://www.iso.org/iso-4217-currency-codes.html
