@@ -5,7 +5,7 @@ Functionality
 -------------
 
 The Narrativ advertiser tag allows Narrativ to track user behavior on an advertiser's site. Our auction system optimizes advertiser acquisition and ROI by analyzing data on page views and purchase behavior. Any other PII that is
-captured, such as names, email addresses, etc. will be hashed and never stored in plain text. The tag runs
+captured, such as names, etc. will be hashed and never stored in plain text. The tag runs
 asynchronously in the background so there is no impact to page load times.
 
 Implementation
@@ -38,10 +38,6 @@ just leave it out if you choose not to include the data.
    * - Field Name
      - Type
      - Description
-
-   * - user_email
-     - string
-     - Optional. The user's email address (this will be hashed before being stored - Narrativ does not store PII)
 
    * - page_type
      - string
@@ -89,9 +85,13 @@ just leave it out if you choose not to include the data.
      - string
      - Optional. The `Google category`_ of the product.
 
+   * - product_brand
+     - string
+     - Optional. The brand of the product.
+
    * - product_price
      - float
-     - Required. The price of the product
+     - Required. The price of the product.
 
    * - product_quantity
      - integer
@@ -114,6 +114,7 @@ information from your own page into our data layer using Javascript before loadi
             product_id: purchased[i].ItemID,
             product_name: purchased[i].ItemName,
             product_category: purchased[i].ItemCategory,
+            product_brand: purchased[i].ItemBrand,
             product_price: purchased[i].ItemPrice,
             product_quantity: purchased[i].ItemQuantity
           });
@@ -145,25 +146,7 @@ information from your own page into our data layer using Javascript before loadi
 Adding Information for the Page View Tag
 ----------------------------------------
 
-The page view tag goes on every page except the checkout page. Remember to change "ACCOUNT NAME" to your Narrativ account name.
-
-*window.BAMX_EVENT_DATA*
-
-.. list-table::
-   :widths: 30 10 60
-   :header-rows: 1
-
-   * - Field Name
-     - Type
-     - Description
-
-   * - user_email
-     - string
-     - Optional. The user's email address (this will be hashed before being stored - Narrativ does not store PII)
-
-   * - user_id
-     - string
-     - Optional. The ID the user has in your system, if available.
+The page view tag goes on every page except for pages with Personal Identifying Information (PII). Remember to change "ACCOUNT NAME" to your Narrativ account name.
 
 What you see below is another example. You cannot copy and paste it as is. Insert the page view
 information into our data layer using Javascript before loading the Narrativ tag.
@@ -172,10 +155,6 @@ information into our data layer using Javascript before loading the Narrativ tag
 
   <!-- begin NARRATIV jstag -->
   <script type="text/javascript">
-      window.BAMX_EVENT_DATA = {
-          user_email: {{UserEmail}},
-          user_id: {{UserID}}
-      }
       (function (account) {
           try {
               var b = document.createElement("script");
