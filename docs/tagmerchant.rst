@@ -4,9 +4,10 @@ Narrativ Advertiser Tag
 Functionality
 -------------
 
-The Narrativ advertiser tag allows Narrativ to track user behavior on an advertiser's site. Our auction system optimizes advertiser acquisition and ROI by analyzing data on page views and purchase behavior. Any other PII that is
-captured, such as names, etc. will be hashed and never stored in plain text. The tag runs
-asynchronously in the background so there is no impact to page load times.
+The Narrativ advertiser tag allows Narrativ to track user behavior on an advertiser's site. Our auction system 
+optimizes advertiser acquisition and ROI by analyzing data on page views and purchase behavior. Any other Personal 
+Identifying Information (PII) that is captured, such as names, etc. will be hashed and never stored in plain text. The 
+tag runs asynchronously in the background so there is no impact to page load times.
 
 Implementation
 --------------
@@ -146,7 +147,8 @@ information from your own page into our data layer using Javascript before loadi
 Adding Information for the Page View Tag
 ----------------------------------------
 
-The page view tag goes on every page except for pages with Personal Identifying Information (PII). Remember to change "ACCOUNT NAME" to your Narrativ account name.
+The page view tag goes on every page except for pages with PII. Remember to change "ACCOUNT NAME" to your Narrativ 
+account name.
 
 What you see below is another example. You cannot copy and paste it as is. Insert the page view
 information into our data layer using Javascript before loading the Narrativ tag.
