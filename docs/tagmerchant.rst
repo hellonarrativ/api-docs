@@ -5,9 +5,9 @@ Functionality
 -------------
 
 The Narrativ advertiser tag allows Narrativ to track user behavior on an advertiser's site. Our auction system 
-optimizes advertiser acquisition and ROI by analyzing data on page views and purchase behavior. Any other Personal 
-Identifying Information (PII) that is captured, such as names, etc. will be hashed and never stored in plain text. The 
-tag runs asynchronously in the background so there is no impact to page load times.
+optimizes advertiser acquisition and ROI by analyzing data on page views and purchase behavior. No Personal 
+Identifying Information (PII) is captured. The tag runs asynchronously in the background so there is no impact to page 
+load times.
 
 Implementation
 --------------
