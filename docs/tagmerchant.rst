@@ -105,7 +105,7 @@ information from your own page into our data layer using Javascript before loadi
 
 ::
 
-    <!-- begin NARRATIV jstag -->
+    <!-- Begin Narrativ Jstag -->
     <script type="text/javascript">
         var purchased = window.dataLayer[3]['OrderItems'];
         var productsPurchased = [];
@@ -121,6 +121,7 @@ information from your own page into our data layer using Javascript before loadi
           });
           orderTotal += product_price;
         }
+
         window.BAMX_EVENT_DATA = {
             page_type: 'checkout',
             user_id: {{UserID}},
@@ -130,7 +131,8 @@ information from your own page into our data layer using Javascript before loadi
             order_value: orderTotal,
             currency: {{CurrencyCode}}
         };
-        (function (account) {
+
+        (function(account) {
             try {
               var b = document.createElement("script");
               b.type = "text/javascript";
@@ -141,7 +143,7 @@ information from your own page into our data layer using Javascript before loadi
             } catch (e) {}
         }("ACCOUNT NAME"));
     </script>
-    <!-- end NARRATIV jstag -->
+    <!-- End Narrativ Jstag -->
 
 
 Adding Information for the Page View Tag
@@ -155,9 +157,9 @@ information into our data layer using Javascript before loading the Narrativ tag
 
 ::
 
-  <!-- begin NARRATIV jstag -->
+  <!-- Begin Narrativ Jstag -->
   <script type="text/javascript">
-      (function (account) {
+      (function(account) {
           try {
               var b = document.createElement("script");
               b.type = "text/javascript";
@@ -168,7 +170,7 @@ information into our data layer using Javascript before loading the Narrativ tag
           } catch (e) {}
       }("ACCOUNT NAME"));
   </script>
-  <!-- end NARRATIV jstag -->
+  <!-- End Narrativ Jstag -->
 
 Google Tag Manager Walkthrough
 ------------------------------
