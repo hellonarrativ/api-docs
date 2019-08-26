@@ -4,11 +4,11 @@ Narrativ Publisher Tag
 Functionality
 -------------
 
-The Narrativ publisher tag is a lightweight JavaScript tag that has two main components. First, it will track user behavior
-such as page views, SmartLink impressions and clicks. Second, it will find all eligible commerce links on the page and run
+The Narrativ publisher tag is a lightweight JavaScript tag that serves two main purposes. First, it will track user behavior
+such as page views, Narrativ link impressions and clicks. Second, it will find all eligible commerce links on the page and run
 the auctions, allowing the destination of the links to be updated ahead of time.
 
-**Please Note:** The tag identifies each link in our system by the product url and page url. If your website uses dynamic values (such as user or session id) in either the product or page urls please inform your Narrativ rep to ensure correctly functionality
+**Please Note:** The tag identifies each link in our system by the product url and page url. If your website uses dynamic values (such as user or session id) in either the product or page urls please inform your Narrativ rep to ensure correct functionality
 
 Core Implementation
 --------------
@@ -42,20 +42,20 @@ in the HEAD section of all your site's pages.
 Link Rewriting
 -----
 
-This is a feature of our JavaScript that must best be enabled in your account settings. Once enabled, the tag will automatically scan your article and convert any regular links to SmartLinks.
+This is a feature of our JavaScript tag that must best be enabled in your account settings. Once enabled, the tag will automatically scan your article and convert any regular links to SmartLinks.
 
 Toggle Feature
 ^^^^^^^^^^^^^^^
 
 * To enable or disable link rewriting globally for your publisher account, contact us at `hello@narrativ.com`_
 
-* Once this feature is enabled on your publisher account, you can toggle on or off across your entire site
+* Once this feature is enabled on your publisher account, you can toggle it on or off across your entire site
   by updating the Narrativ window object
   ::
 
     window.NRTV_EVENT_DATA.linkmate = true;
 
-* Once this feature is enabled on your publisher account, you can toggle on and off on a
+* Once this feature is enabled on your publisher account, you can toggle it on and off on a
   specific article by updating the Narrativ window object
   ::
 
@@ -92,7 +92,7 @@ After an auction completes, the Narrativ tag will write the output of the auctio
 Updating Your Buttons
 ^^^^^^^^^^^^^^^^^^^^^
 
-Below is an example JS snippet that will create a `MutationObserver`_, on all relevant links on your article, which trigger after our auction runs. Please note, the code below assume ``monetized-links`` is a pre-existing identifier. If there is no identifier you may use ``document.querySelectorAll("a[data-bamx-auction]")``
+Below is an example JS snippet that will create a `MutationObserver`_, on all relevant links on your article, which trigger after our auction runs. Please note, the code below assumes ``monetized-links`` is a pre-existing identifier. If there is no identifier you may use ``document.querySelectorAll("a[data-bamx-auction]")`` instead.
 
 
 .. code-block:: javascript
