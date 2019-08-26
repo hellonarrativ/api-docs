@@ -1,13 +1,10 @@
-Product API
+Multi-Match Exclusive API
 ============
 
 Overview
 --------
 
-By providing us a payload with certain product descriptors,
-we will return a set of monetizable :ref:`ClickMate <clickmate_overview>`
-links, along with our point-in-time estimate of the CPC for
-each product in the result set.
+This API takes a product identifier and matches the product to all instances of this product in our merchant network. The output will include matched product information, merchant information, and Narrativ links which are exclusively matched to each merchant. Please note that by using this API, Narrativ's bidding algorithm will be bypassed. This endpoint is typically used for multiple links or multiple buttons per product.
 
 
 Request
@@ -28,35 +25,28 @@ Request
 
    * - publisher_slug
      - string(64)
-     - (*Required*) The slug provided by your Narrativ account rep.
+     - (*Required*) The account identifier provided by your Narrativ account rep.
 
    * - gtin
      - string(14)
-     - **Product descriptor** (*Optional*): the GTIN of the product to be wrapped in a ClickMate link
+     - **Product descriptor** (*Optional - see below*): the GTIN of the product - used as an identifier to find matches in Narrativ merchant network. Please note, this is sometimes referred to as the UPC of the product.
 
    * - sku
      - string(255)
-     - **Product descriptor** (*Optional*): the SKU of the product to be wrapped in a ClickMate link
-
-   * - product_url
-     - string(2048)
-     - **Product descriptor** (*Optional*): the URL of the product to be wrapped in a ClickMate link (must be URL encoded)
-
+     - **Product descriptor** (*Optional - see below*): the SKU of the product - used as an identifier to find matches in Narrativ merchant network
+   
    * - article_url
      - string(2048)
-     - (*Required*): The URL of the article your link is coming from (must be URL encoded)
+     - **Article info** (*Required*): The URL of the article or page the link is published on (must be URL encoded!)
 
    * - article_name
      - string(100)
-     - (*Required*): The name or title of the article your link is coming from
+     - **Article info** (*Required*): The name or title of the article or page the link is published on
 
 
-Required Parameters
+Identifier Parameters
 ^^^^^^^^^^^^^^^^^^^
-
-- Option 1: Provide at least one **product descriptor** in your API request (``gtin``, ``sku``, ``product_url``) and both ``article_url`` and ``article_name``. 
-- Option 2: Provide at least one **product descriptor** in your API request (``gtin``, ``sku``, ``product_url``) but omit both ``article_url`` and ``article_name``. But in this case, append both ``article_url`` and ``article_name`` as query parameters to the resulting ClickMate link.
-  See :ref:`the ClickMate documentation <clickmate_overview>` for more information.
+**Please Note:** at least one identifier (``gtin``, ``sku``) must be present for this endpoint.
 
 
 Response
@@ -79,7 +69,7 @@ having the following structure:
 
    * - clickmate_link
      - string
-     - The :ref:`ClickMate <clickmate_overview>` URL which monetizes the retrieved product
+     - The monetized Narrativ link which is exclusively matched to each merchant
 
 
    * - product_information
@@ -125,11 +115,11 @@ Example Requests
 
 ::
 
-    GET /api/v1/product_match/clickmate/exclusive_links/?publisher_slug=myacct&gtin=77777777777&article_url=https%3A%2F%2Fwww.publisher.example%2Fstory%2Fmyarticle&article_name=myarticle
+    GET /api/v1/product_match/clickmate/exclusive_links/?publisher_slug=myacct&gtin=77777777777&article_name=Top+5+Products&article_url=https%3A%2F%2Fwww.narrativ.com%2Farticles%2Ftop5products
 
-    GET /api/v1/product_match/clickmate/exclusive_links/?publisher_slug=myacct&sku=00000000&&gtin=88888888888888&article_url=https%3A%2F%2Fwww.publisher.example%2Fstory%2Fmyarticle&article_name=myarticle
+    GET /api/v1/product_match/clickmate/exclusive_links/?publisher_slug=myacct&sku=00000000&&gtin=88888888888888&article_name=Top+5+Products&article_url=https%3A%2F%2Fwww.narrativ.com%2Farticles%2Ftop5products
 
-    GET /api/v1/product_match/clickmate/exclusive_links/?publisher_slug=myacct&sku=00000000&&gtin=99999999999999&product_url=https%3A%2F%2Fwww.merchant.example%2Fproduct%2F123%0A&article_url=https%3A%2F%2Fwww.publisher.example%2Fstory%2Fmyarticle&article_name=myarticle
+    GET /api/v1/product_match/clickmate/exclusive_links/?publisher_slug=myacct&sku=00000000&article_name=Top+5+Products&article_url=https%3A%2F%2Fwww.narrativ.com%2Farticles%2Ftop5products
 
 
 Example Response

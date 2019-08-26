@@ -1,7 +1,7 @@
-SmartLinks
+Dynamic API
 ==========
 
-Create a new SmartLink
+Create a new Narrativ Dynamic Link (SmartLink)
 ----------------------
 
 Request
@@ -11,8 +11,7 @@ Request
 
     POST /api/v1/smart_links/
 
-.. NOTE: Don't explicitly say that `article_url` or `article_publication_date`
-   are optional -- we want clients to fill in these fields.
+.. NOTE: Adding required for article name and url
 
 .. list-table::
    :widths: 30 10 60
@@ -28,11 +27,11 @@ Request
 
    * - article_name
      - string
-     - The name of the article that this SmartLink will be featured on.
+     - (*Required*) The name of the article that this SmartLink will be featured on.
 
    * - article_url
      - string
-     - The URL of the article that this SmartLink will be featured on.
+     - (*Required*) The URL of the article that this SmartLink will be featured on.
 
    * - article_publication_date
      - timestamp
@@ -40,7 +39,7 @@ Request
 
    * - exclusive_match_requested
      - boolean
-     - Optional. If true, lock this SmartLink to the original merchant. Default false.
+     - (*Optional*) If true, lock this SmartLink to the original merchant. Default false.
 
    * - pub_id
      - integer
@@ -67,7 +66,7 @@ Response
 
    * - smart_link_url
      - string
-     - The URL of the SmartLink, which should be substituted for the original link in your article.
+     - The URL of the SmartLink, which should be substituted for the original link in your article. This is the monetized Narrativ link.
 
 Example
 ^^^^^^^
