@@ -4,7 +4,7 @@ Multi-Match Exclusive API
 Overview
 --------
 
-This API take a product identifier and matches the product to all instances of this product in our merchant network. The output will include matched product information, merchant information, and Narrativ links which are exclusively matched to each merchant. Please note that by using this API, Narrativ's bidding algorithm will be bypassed. This endpoint is typically used for multiple links or multiple buttons per product.
+This API takes a product identifier and matches the product to all instances of this product in our merchant network. The output will include matched product information, merchant information, and Narrativ links which are exclusively matched to each merchant. Please note that by using this API, Narrativ's bidding algorithm will be bypassed. This endpoint is typically used for multiple links or multiple buttons per product.
 
 
 Request
@@ -69,7 +69,7 @@ having the following structure:
 
    * - clickmate_link
      - string
-     - The monetized Narrativ link which are exclusively matched to each merchant
+     - The monetized Narrativ link which is exclusively matched to each merchant
 
 
    * - product_information
