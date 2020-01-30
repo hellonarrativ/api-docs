@@ -153,7 +153,7 @@ Remember to replace "accountname" with your Narrativ account name.
             try {
               var b = document.createElement("script");
               b.type = "text/javascript";
-              b.src = "//static.narrativ.com/tags/" + account + ".js";
+              b.src = "https://static.narrativ.com/tags/" + account + ".js";
               b.async = true;
 
               var a = document.getElementsByTagName("script")[0];
@@ -181,7 +181,7 @@ information into our data layer using Javascript before loading the Narrativ tag
           try {
               var b = document.createElement("script");
               b.type = "text/javascript";
-              b.src = "//static.narrativ.com/tags/" + account + ".js";
+              b.src = "https://static.narrativ.com/tags/" + account + ".js";
               b.async = true;
               var a = document.getElementsByTagName("script")[0];
               a.parentNode.insertBefore(b, a);

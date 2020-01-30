@@ -29,7 +29,7 @@ in the HEAD section of all your site's pages.
             window.skimlinks_exclude = ["shop-links.co", "shop-edits.co"];
             var b = document.createElement("script");
             b.type = "text/javascript";
-            b.src = "//static.narrativ.com/tags/" + account + ".js";
+            b.src = "https://static.narrativ.com/tags/" + account + ".js";
             b.async = true;
             var a = document.getElementsByTagName("script")[0];
             a.parentNode.insertBefore(b,a);
