@@ -54,7 +54,7 @@ author = 'Narrativ'
 # built documents.
 #
 # The short X.Y version. (major version 1 corresponds to /api/v1/)
-version = '1.9.14'
+version = '1.9.15'
 # The full version, including alpha/beta/rc tags.
 release = '1.9.14'
 
