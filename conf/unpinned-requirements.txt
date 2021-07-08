@@ -11,4 +11,4 @@ pip-tools
 sphinx
 sphinx-autobuild
 sphinx-rtd-theme
-pyyaml==4.2b4
+pyyaml==5.4
