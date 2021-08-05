@@ -49,7 +49,6 @@ browse the full documentation below:
 
    extensionbasics
    extensionuse
-   smartshopbuild
    mobile_link
 
 .. toctree::
