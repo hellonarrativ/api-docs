@@ -100,9 +100,10 @@ Formatting
 ----------
 
 Please make note of below formatting standards when ingesting the product feeds:
-*  All headers are wrapped in double quotes
-*  All string type fields are wrapped in double quotes
-*  All empty fields are denoted by empty double quotes
+
+* All headers are wrapped in double quotes
+* All string type fields are wrapped in double quotes
+* All empty fields are denoted by empty double quotes
 
 
 Feed Delivery
