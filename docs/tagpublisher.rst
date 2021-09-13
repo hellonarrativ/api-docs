@@ -129,7 +129,6 @@ enable you to update those values dynamically.
 After an auction completes, the Narrativ tag will write the output of the auction to the
 `data-bamx-auction` attribute. In that attribute, you can find product price,
 retailer name, image_url, etc. to update the article information for a link.
-A full list of the auction response can be found on our :doc:`Auction <auction>` page.
 
 Updating Your Buttons
 ^^^^^^^^^^^^^^^^^^^^^

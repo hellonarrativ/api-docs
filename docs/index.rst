@@ -26,22 +26,15 @@ browse the full documentation below:
 
    smartlink
    clickmate
-   productapi
    merchantfeeds
    utmsourcetracking
-   auction
-   amp
-   events
-   statistics
 
 .. toctree::
    :maxdepth: 2
    :caption: Javascript Tag
 
-   tagbasics
    tagpublisher
    tagbrand
-   tagpublishercustom
 
 .. toctree::
    :maxdepth: 2
