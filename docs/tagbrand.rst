@@ -227,6 +227,7 @@ existing Shopify integration:
 	                "product_quantity" : "{{ line_item.quantity }}", },
                 {% endif %}
             {% endfor %} ];
+        };
 
         window.BAMX_EVENT_DATA = {
             "page_type": “checkout”,
