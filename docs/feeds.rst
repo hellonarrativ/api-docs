@@ -12,8 +12,8 @@ export.
 Formatting
 ----------
 
-We currently support CSV and XML file formats and zip and gzip compressed files. Please ensure the fields GTIN
-(or SKU if unavailable), Product URL and Stock Status are included in the file. You can view a `sample file`_ here.
+We currently support CSV and XML file formats and zip and gzip compressed files. Please ensure all fields adhere to
+our `formatting requirements`_. You can view a `sample file`_ here.
 
 Send via FTP
 ------------
@@ -75,3 +75,4 @@ If you have any questions about product feed requirements, please feel free to r
 for assistance.
 
 .. _sample file: https://docs.google.com/spreadsheets/d/1VQLhQ_9xVtjO8ipXnUTsjnumJ1HaErYsXPheNErWo8k/edit#gid=0
+.. _formatting requirements: https://docs.google.com/spreadsheets/d/1cwH1GrNLUy5QyPfK5zIVdvM7Z2e38A7p4BUKugYfru8/edit#gid=0
