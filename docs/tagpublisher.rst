@@ -1,15 +1,15 @@
 Narrativ Publisher Tag
 ======================
 
-Functionality
--------------
+Overview
+---------
 
-The Narrativ publisher tag is a light-weight tag that has two operational modes: Audit Mode and Active Mode.
+The Narrativ publisher tag is a lightweight tag that has two operational modes: Audit Mode and Active Mode.
 
 Audit Mode
 ^^^^^^^^^^
 
-Audit Mode allows us to size the opportunity for Out of Stock link repair and scopes the size of
+Audit Mode allows us to size the opportunity for out of stock link repair and scopes the size of
 integration.  This mode also allows us to identify additional retailers that sell your recommended
 products, diversifying your content monetization.
 
@@ -23,69 +23,62 @@ Reporting on links can be found in the Narrativ dashboard.
 Audit Mode Implementation
 -------------------------
 
-Getting the Narrativ tag to successfully run in Audit Mode is a simple process.
-Copy and paste the following Javascript snippet in the HEAD section of all your site's pages.
+Copy and paste the following Javascript snippet into the ``<head>`` section of all your site's pages.
 
-* Make sure to replace ``ACCOUNT NAME`` with your Narrativ account name.
-* Need to know your Narrativ account name? Log into dashboard.narrativ.com and go to `setup`_ to see the snippet
-  customized with your account info, or reach out to your account manager for support as needed.
-* See if it's working: There is a checker on your "setup" page where you can insert your site URL to verify if
-  the Narrativ Publisher tag is correctly installed.
+* Make sure to replace ``ACCOUNT ID`` with your own Narrativ account id.
+* Need to know your Narrativ account id? Reach out to your growth manager or solutions@narrativ.com for assistance.
 
 ::
 
-    <script type="text/javascript">
-        (function(window, document, account) {
+     <script type="text/javascript">
+        (function (window, document, accountId) {
             window.skimlinks_exclude = ["shop-links.co", "shop-edits.co"];
             window.NRTV_EVENT_DATA = { donotlink: true };
             var b = document.createElement("script");
             b.type = "text/javascript";
-            b.src = "https://static.narrativ.com/tags/" + account + ".js";
+            b.src = "https://static.narrativ.com/tags/narrativ-pub.1.0.0.js";
             b.async = true;
+            b.id = 'nrtvTag';
+            b.setAttribute('data-narrativ-id', accountId);
             var a = document.getElementsByTagName("script")[0];
-            a.parentNode.insertBefore(b,a);
-        })(window, document, "ACCOUNT NAME");
-    </script>
-
+            a.parentNode.insertBefore(b, a);
+        })(window, document, ACCOUNT ID);
+  </script>
 
 Active Mode Implementation
 --------------------------
 
-Updating the tag from Audit Mode to Active Mode is a small, one-line change.
-Simply remove the following line from the audit tag to enable Active Mode:
+To update your Audit Mode tag to Active Mode, simply remove the following line from the script:
 
 ::
 
     window.NRTV_EVENT_DATA = { donotlink: true };
 
-If you aren't currently using the tag in Audit Mode, copy and paste the following Javascript
-snippet in the HEAD section of all your site's pages.
+If you aren't currently using the tag in Audit Mode, copy and paste the following Javascript snippet into the
+``<head>`` section of all your site's pages.
 
-* Make sure to replace ``ACCOUNT NAME`` with your Narrativ account name.
-* Need to know your Narrativ account name? Log into dashboard.narrativ.com and go to `setup`_ to see the snippet
-  customized with your account info, or reach out to your account manager for support as needed.
-* See if it's working: There is a checker on your "setup" page where you can insert your site URL to verify if
-  the Narrativ Publisher tag is correctly installed.
+* Make sure to replace ``ACCOUNT ID`` with your own Narrativ account id.
+* Need to know your Narrativ account id? Reach out to your growth manager or solutions@narrativ.com for assistance.
 
 ::
 
-    <script type="text/javascript">
-        (function(window, document, account) {
+     <script type="text/javascript">
+        (function (window, document, accountId) {
             window.skimlinks_exclude = ["shop-links.co", "shop-edits.co"];
             var b = document.createElement("script");
             b.type = "text/javascript";
-            b.src = "https://static.narrativ.com/tags/" + account + ".js";
+            b.src = "https://static.narrativ.com/tags/narrativ-pub.1.0.0.js";
             b.async = true;
+            b.id = 'nrtvTag';
+            b.setAttribute('data-narrativ-id', accountId);
             var a = document.getElementsByTagName("script")[0];
-            a.parentNode.insertBefore(b,a);
-        })(window, document, "ACCOUNT NAME");
-    </script>
+            a.parentNode.insertBefore(b, a);
+        })(window, document, ACCOUNT ID);
+  </script>
 
-**Please Note**: The tag identifies each link in our system by the product url and page url.
+**Please Note**: The tag determines a link's uniqueness by the combination of the product url and page url.
 If your website uses dynamic values (such as user or session id) in either the product or
-page urls please inform your Narrativ representative to ensure correct functionality
-
-.. _setup: https://dashboard.narrativ.com/#/publisher/account/setup
+page urls, please inform your growth manager or solutions@narrativ.com to ensure correct functionality
 
 Active Mode Capabilities: Link Rewrite Options
 ----------------------------------------------
@@ -121,20 +114,21 @@ Active Mode Capabilities: Link Rewrite Options
 Active Tag Capabilities: Dynamic price and merchant names (Out of Stock optimization)
 -------------------------------------------------------------------------------------
 
-As discussed above, one main benefit of the Narrativ JsTag is to find commerce links on your
-site and run the auctions on page load. For publishers whose commerce buttons or article
-content mention the merchant's name and product price (“$5 at Nordstrom”), this feature will
-enable you to update those values dynamically.
+If your content contains commerce buttons or links that mention a merchant's name or product price
+(i.e. “$5 at Nordstrom”), the tag has a feature to enable dynamic updates of these values.
 
 After an auction completes, the Narrativ tag will write the output of the auction to the
-`data-bamx-auction` attribute. In that attribute, you can find product price,
-retailer name, image_url, etc. to update the article information for a link.
+`data-bamx-auction` attribute. In that attribute, you can find information about the auction winner (e.g. product price,
+merchant name, image url) and update your frontend using this information.
 
 Updating Your Buttons
 ^^^^^^^^^^^^^^^^^^^^^
 
-Below is an example JS snippet that will create a `MutationObserver`_, on all relevant links on your article, which trigger after our auction runs. Please note, the code below assumes ``monetized-links`` is a pre-existing identifier. If there is no identifier you may use ``document.querySelectorAll("a[data-bamx-auction]")`` instead.
+Below is an example JS snippet that will create a `MutationObserver`_ on all relevant links in your content, which
+trigger after our auction runs.
 
+**Please note:** the below code assumes ``monetized-links`` is a pre-existing identifier.
+If there is no identifier you may use ``document.querySelectorAll("a[data-bamx-auction]")`` instead.
 
 .. code-block:: javascript
   :linenos:
@@ -164,8 +158,6 @@ Below is an example JS snippet that will create a `MutationObserver`_, on all re
 
 .. _MutationObserver: https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
 
-.. _hello@narrativ.com: mailto:hello@narrativ.com
-
 Merchant Checkout Tracking: U1 Parameter Support
 ------------------------------------------------
 The Narrativ publisher tag also provides user ID tracking for clicks and checkouts via an appendable U1 Parameter.
@@ -173,32 +165,33 @@ The Narrativ publisher tag also provides user ID tracking for clicks and checkou
 To add the U1 parameter to Narrativ events, add the following snippet to your Narrativ tag script:
 ::
 
-    window.BAMX_EVENT_DATA = { u1Param: yourU1Param };
+    window.NRTV_EVENT_DATA = { data-u1Param: yourU1Param };
 
-Replace ``yourU1Param`` with your U1 Parameter variable
+Replace ``yourU1Param`` with your U1 Parameter variable.
 
 Once added, your Javascript tag should look like this:
 
 ::
 
-    <script type="text/javascript">
-        (function(window, document, account) {
+     <script type="text/javascript">
+        (function (window, document, accountId) {
             window.skimlinks_exclude = ["shop-links.co", "shop-edits.co"];
-            window.BAMX_EVENT_DATA = { u1Param: yourU1Param };
+            window.NRTV_EVENT_DATA = { data-u1Param: yourU1Param };
             var b = document.createElement("script");
             b.type = "text/javascript";
-            b.src = "https://static.narrativ.com/tags/" + account + ".js";
+            b.src = "https://static.narrativ.com/tags/narrativ-pub.1.0.0.js";
             b.async = true;
+            b.id = 'nrtvTag';
+            b.setAttribute('data-narrativ-id', accountId);
             var a = document.getElementsByTagName("script")[0];
-            a.parentNode.insertBefore(b,a);
-        })(window, document, "ACCOUNT NAME");
-    </script>
+            a.parentNode.insertBefore(b, a);
+        })(window, document, ACCOUNT ID);
+  </script>
 
-The U1 Parameter can be included in click and order reports.
-Please contact your account manager or support@narrativ.com for more details.
+The U1 Parameter can be included in click and order reports. Please contact your growth manager or
+solutions@narrativ.com for more details.
 
-**Note**: This implementation is specific for Linkmate integrations.
-For using U1 Parameters with a Clickmate integration,
-see `Clickmate Query Parameters`_.
+**Please note**: This implementation is specific to tag integrations.
+For using U1 Parameters with a Clickmate integration, see `Clickmate Query Parameters`_.
 
 .. _Clickmate Query Parameters: https://docs.narrativ.com/en/stable/clickmate.html#query-params
