@@ -165,7 +165,7 @@ The Narrativ publisher tag also provides user ID tracking for clicks and checkou
 To add the U1 parameter to Narrativ events, add the following snippet to your Narrativ tag script:
 ::
 
-    window.NRTV_EVENT_DATA = { u1Param: yourU1Param };
+    window.NRTV_EVENT_DATA = { data-u1Param: yourU1Param };
 
 Replace ``yourU1Param`` with your U1 Parameter variable.
 
@@ -176,7 +176,7 @@ Once added, your Javascript tag should look like this:
      <script type="text/javascript">
         (function (window, document, accountId) {
             window.skimlinks_exclude = ["shop-links.co", "shop-edits.co"];
-            window.NRTV_EVENT_DATA = { u1Param: yourU1Param };
+            window.NRTV_EVENT_DATA = { data-u1Param: yourU1Param };
             var b = document.createElement("script");
             b.type = "text/javascript";
             b.src = "https://static.narrativ.com/tags/narrativ-pub.1.0.0.js";
