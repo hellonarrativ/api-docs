@@ -74,5 +74,5 @@ Please generate and provide us with a public RSA key to register as an authorize
 If you have any questions about product feed requirements, please feel free to reach out to solutions@narrativ.com
 for assistance.
 
-.. _sample file: https://docs.google.com/spreadsheets/d/1VQLhQ_9xVtjO8ipXnUTsjnumJ1HaErYsXPheNErWo8k/edit#gid=0
+.. _sample file: https://docs.google.com/spreadsheets/d/1-UG1hYfZ-qpDFvxKTbtH0tiTJVX-fi4H0ofaoardZko/edit#gid=0
 .. _formatting requirements: https://docs.google.com/spreadsheets/d/1cwH1GrNLUy5QyPfK5zIVdvM7Z2e38A7p4BUKugYfru8/edit#gid=0
