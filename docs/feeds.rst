@@ -74,5 +74,5 @@ Please generate and provide us with a public RSA key to register as an authorize
 If you have any questions about product feed requirements, please feel free to reach out to solutions@narrativ.com
 for assistance.
 
-.. _sample file: https://github.com/hellonarrativ/api-docs/blob/BAM-11068/docs/samplefeed.csv
+.. _sample file: https://static.bam-x.com/api-docs/samplefeed.csv
 .. _formatting requirements: https://docs.google.com/spreadsheets/d/1cwH1GrNLUy5QyPfK5zIVdvM7Z2e38A7p4BUKugYfru8/edit#gid=0
