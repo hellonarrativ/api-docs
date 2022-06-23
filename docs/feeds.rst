@@ -27,13 +27,14 @@ Note: Enable passive and binary modes
      - Value
 
    * - Host
-     - feeds.bam-x.com
+     - ftp.planethowl.com
 
    * - Static IP
-     - 52.7.95.122
+     - 34.235.193.55
+     - 44.205.197.234
 
    * - Port
-     - 2221
+     - 21
 
    * - Username
      - Will be provided to you
@@ -57,13 +58,14 @@ Please generate and provide us with a public RSA key to register as an authorize
      - Value
 
    * - Host
-     - feeds.bam-x.com
+     - sftp.planethowl.com
 
    * - Static IP
-     - 52.7.95.122
+     - 44.196.54.0
+     - 44.207.179.93
 
    * - Port
-     - 2223
+     - 22
 
    * - Username
      - Will be provided to you
