@@ -30,8 +30,7 @@ Note: Enable passive and binary modes
      - ftp.planethowl.com
 
    * - Static IP
-     - 34.235.193.55
-     - 44.205.197.234
+     - 34.235.193.55, 44.205.197.234
 
    * - Port
      - 21
@@ -61,8 +60,7 @@ Please generate and provide us with a public RSA key to register as an authorize
      - sftp.planethowl.com
 
    * - Static IP
-     - 44.196.54.0
-     - 44.207.179.93
+     - 44.196.54.0, 44.207.179.93
 
    * - Port
      - 22
