@@ -260,7 +260,9 @@ the snippet) and save your changes.
 Checkout Events
 ^^^^^^^^^^^^^^^
 In the same code editing view, place the following code snippet into the ``checkout.liquid`` layout (pictured below the
-snippet) and save your changes. Remember to also replace ``ACCOUNT ID`` with your own Narrativ account id.
+snippet) and save your changes. 
+* Replace ``is_new_customer: <isNewCustomer>,`` with a boolean (true/false) indicating if the order is the customer’s first. If field is not available, replace ``<isNewCustomer>`` with ``null``. 
+* Remember to also replace ``ACCOUNT ID`` with your own Narrativ account id.
 
 **Please note:** to ensure the tag captures discount codes, include logic that checks for the presence of a discount
 code and applies it proportionally to the ``product_price`` variable. Discount codes should not be applied to the
@@ -285,7 +287,7 @@ code and applies it proportionally to the ``product_price`` variable. Discount c
 
          window.NRTV_EVENT_DATA = {
         	page_type: 'checkout',
-        	is_new_customer: null,
+        	is_new_customer: <isNewCustomer>,
           	products_purchased: productsPurchased,
           	order_id: Shopify.checkout.order_id.toString(),
         	order_value: orderTotal,
