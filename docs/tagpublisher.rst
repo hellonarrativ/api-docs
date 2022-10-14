@@ -32,7 +32,7 @@ Copy and paste the following Javascript snippet into the ``<head>`` section of a
 
      <script type="text/javascript">
         (function (window, document, accountId) {
-            window.skimlinks_exclude = ["shop-links.co", "shop-edits.co"];
+            window.skimlinks_exclude = ["shop-links.co", "shop-edits.co", "howl.me"];
             window.NRTV_EVENT_DATA = { donotlink: true };
             var b = document.createElement("script");
             b.type = "text/javascript";
@@ -64,7 +64,7 @@ If you aren't currently using the tag in Audit Mode, copy and paste the followin
 
      <script type="text/javascript">
         (function (window, document, accountId) {
-            window.skimlinks_exclude = ["shop-links.co", "shop-edits.co"];
+            window.skimlinks_exclude = ["shop-links.co", "shop-edits.co", "howl.me"];
             var b = document.createElement("script");
             b.type = "text/javascript";
             b.src = "https://static.narrativ.com/tags/narrativ-pub.1.0.0.js";
@@ -175,7 +175,7 @@ Once added, your Javascript tag should look like this:
 
      <script type="text/javascript">
         (function (window, document, accountId) {
-            window.skimlinks_exclude = ["shop-links.co", "shop-edits.co"];
+            window.skimlinks_exclude = ["shop-links.co", "shop-edits.co", "howl.me"];
             window.NRTV_EVENT_DATA = { data-u1Param: yourU1Param };
             var b = document.createElement("script");
             b.type = "text/javascript";
