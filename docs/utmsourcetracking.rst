@@ -28,14 +28,20 @@ These are links that have been created using the Narrativ Chrome Extension, whic
 
 ::
 
-   https://shop-links.co/1611792246540568252
+   https://howl.me/1611792246540568252
 
+
+You may also see the legacy domain shop-links. Tracking parameters can be added to either format in the same way.
+
+::
+
+   https://shop-links.co/1611792246540568252
 
 To add ``utm_source`` simply append it to the end like this:
 
 ::
 
-   https://shop-links.co/1611792246540568252?utm_source=applenews
+   https://howl.me/1611792246540568252?utm_source=applenews
 
 
 Often publishers and creators use u1’s as an additional tracking parameter. Narrativ ``utm_source`` works well with
@@ -45,14 +51,14 @@ A normal link with u1 would look like:
 
 ::
 
-   https://shop-links.co/1611792246540568252?u1=myu1param
+   https://howl.me/1611792246540568252?u1=myu1param
 
 
 To add ``utm_source`` simply append it to the end like this:
 
 ::
 
-   https://shop-links.co/1611792246540568252?u1=myu1param&utm_source=applenews
+   https://howl.me/1611792246540568252?u1=myu1param&utm_source=applenews
 
 
 How to add utm_source to Click wrapper links (Clickmate Links)
@@ -62,14 +68,14 @@ These are links that have been wrapped in Narrativ click wrapper, which follows 
 
 ::
 
-   https://shop-links.co/link/?url=https%3A%2F%2Fdermstore.com.example%2Fshop%2Fproduct1234&publisher_slug=myacct&exclusive=1&article_name=my-story&article_url=http%3A%2F%2Fwww.myarticle.com
+   https://howl.me/link/?url=https%3A%2F%2Fdermstore.com.example%2Fshop%2Fproduct1234&publisher_slug=myacct&exclusive=1&article_name=my-story&article_url=http%3A%2F%2Fwww.myarticle.com
 
 
 To add ``utm_source`` simply append it to the end like this:
 
 ::
 
-   https://shop-links.co/link/?url=https%3A%2F%2Fdermstore.com.example%2Fshop%2Fproduct1234&publisher_slug=myacct&exclusive=1&article_name=my-story&article_url=http%3A%2F%2Fwww.myarticle.com&utm_source=applenews
+   https://howl.me/link/?url=https%3A%2F%2Fdermstore.com.example%2Fshop%2Fproduct1234&publisher_slug=myacct&exclusive=1&article_name=my-story&article_url=http%3A%2F%2Fwww.myarticle.com&utm_source=applenews
 
 
 Often publishers and creators use u1’s as an additional tracking parameter. Narrativ ``utm_source`` works well with
@@ -79,11 +85,11 @@ A normal link with u1 would look like:
 
 ::
 
-   https://shop-links.co/link/?url=https%3A%2F%2Fdermstore.com.example%2Fshop%2Fproduct1234&publisher_slug=myacct&exclusive=1&article_name=my-story&article_url=http%3A%2F%2Fwww.myarticle.com&u1=myu1param
+   https://howl.me/link/?url=https%3A%2F%2Fdermstore.com.example%2Fshop%2Fproduct1234&publisher_slug=myacct&exclusive=1&article_name=my-story&article_url=http%3A%2F%2Fwww.myarticle.com&u1=myu1param
 
 
 To add ``utm_source`` simply append it to the end like this:
 
 ::
 
-   https://shop-links.co/link/?url=https%3A%2F%2Fdermstore.com.example%2Fshop%2Fproduct1234&publisher_slug=myacct&exclusive=1&article_name=my-story&article_url=http%3A%2F%2Fwww.myarticle.com&u1=myu1param&utm_source=applenews
+   https://howl.me/link/?url=https%3A%2F%2Fdermstore.com.example%2Fshop%2Fproduct1234&publisher_slug=myacct&exclusive=1&article_name=my-story&article_url=http%3A%2F%2Fwww.myarticle.com&u1=myu1param&utm_source=applenews
