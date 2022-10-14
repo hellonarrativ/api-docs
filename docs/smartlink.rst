@@ -103,8 +103,8 @@ Example
           "url": "https://www.google.com/",
           "exclusive_match_requested": true,
           "smart_link_url": "https://shop-links.co/1611792246540568252",
-          "howl_link_url": "https://howl.me/chPWcXAXAOG",
-          "encoded_auction_id": "chPWcXAXAOG"
+          "howl_link_url": "https://howl.me/chPWcXAXAOa",
+          "encoded_auction_id": "chPWcXAXAOa"
           "article": {
             "article_id": 2536,
             "uid": 2,
