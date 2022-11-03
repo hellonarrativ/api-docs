@@ -3,13 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Narrativ API Developer Documentation
+Howl API Developer Documentation
 ====================================
 
-At `Narrativ`_, we transform real content into organic ads that are not
+At `Howl`_, we transform real content into organic ads that are not
 impacted by AdBlock. Our goal is to lift publisher revenues from organic
 content through real-time bidding and machine learning solutions. The
-Narrativ API allows you to access our technology without having editors
+Howl API allows you to access our technology without having editors
 create manual links. Create an :doc:`API key <auth>` to get started or
 browse the full documentation below:
 
@@ -52,7 +52,7 @@ browse the full documentation below:
 
 .. toctree::
    :maxdepth: 2
-   :caption: Narrativ Legal
+   :caption: Howl Legal
 
    privacypolicy
 
@@ -70,8 +70,8 @@ Support
 -------
 
 Need additional help? Feel free to `reach out`_ with any questions on
-integration or Narrativ's content marketing platform!
+integration or Howl's content marketing platform!
 
 
-.. _Narrativ: https://narrativ.com/
-.. _reach out: mailto:hello@narrativ.com
+.. _Howl: https://planethowl.com/
+.. _reach out: mailto:hello@planethowl.com
