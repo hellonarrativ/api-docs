@@ -1,11 +1,11 @@
-Narrativ Brand Tag
+Howl Brand Tag
 ==================
 
 Overview
 --------
 
-The Narrativ Brand Tag is a lightweight javascript tag that enables partners to maximize their performance and
-unlock valuable article and product level insights in a customized dashboard. Only clients with Narrativ’s Brand Tag
+The Howl Brand Tag is a lightweight javascript tag that enables partners to maximize their performance and
+unlock valuable article and product level insights in a customized dashboard. Only clients with Howl’s Brand Tag
 can optimize their campaigns by ROAS and see more comprehensive metrics like revenue and RPC. The tag operates through
 two events: page impressions and checkouts.
 
@@ -16,13 +16,13 @@ impact to the page load time.
 Page Impressions
 ^^^^^^^^^^^^^^^^
 
-Page impression events enable Narrativ to ensure attribution for our partners. These events should be fired on
+Page impression events enable Howl to ensure attribution for our partners. These events should be fired on
 every page except pages on the checkout path and the order confirmation page.
 
 Checkouts
 ^^^^^^^^^
 
-Checkout events allow Narrativ to accurately capture revenue and conversions in real time. The data gathered by
+Checkout events allow Howl to accurately capture revenue and conversions in real time. The data gathered by
 checkout events also powers an experience creators and publishers rely on to track top sellers and give better product
 recommendations in their content. Checkout events should be fired on your site’s order confirmation page, or the
 page that loads immediately after they’ve successfully purchased their items.
@@ -30,7 +30,7 @@ page that loads immediately after they’ve successfully purchased their items.
 Adding the Brand Tag
 ^^^^^^^^^^^^^^^^^^^^
 
-To enable Narrativ tracking on your site, follow the instruction set that best fits your site setup:
+To enable Howl tracking on your site, follow the instruction set that best fits your site setup:
 
 `Web Implementation`_
 
@@ -69,9 +69,9 @@ Page Impression Events
 Copy and paste the following Javascript snippet in the HEAD section of all site pages, excluding the checkout path
 (pages that include PII) and the order confirmation page.
 
-* Make sure to replace ``ACCOUNT ID`` with your own Narrativ account id.
+* Make sure to replace ``ACCOUNT ID`` with your own Howl account id.
 
-* Need your Narrativ account id? Reach out to your growth manager or solutions@narrativ.com for assistance.
+* Need your Howl account id? Reach out to your growth manager or solutions@planethowl.com for assistance.
 
 ::
 
@@ -93,7 +93,7 @@ Checkout Events
 
 Place the following code snippet on your site’s order confirmation page, or the page displayed to customers immediately
 after they’ve successfully purchased their items. The code should be populated with order and product purchased details
-pertaining to your data layer. Remember to also replace ``ACCOUNT ID`` with your own Narrativ account id.
+pertaining to your data layer. Remember to also replace ``ACCOUNT ID`` with your own Howl account id.
 
 **Please note:** to ensure the tag captures discount codes, include logic that checks for the presence of a discount
 code and applies it proportionally to the ``product_price`` variable. Discount codes should not be applied to
@@ -236,9 +236,9 @@ On your Shopify home page, navigate to the **Edit code** option in the **Themes*
 Copy and paste the following Javascript snippet into the ``<head>`` tag of the ``theme.liquid`` layout (pictured below
 the snippet) and save your changes.
 
-* Make sure to replace ``ACCOUNT ID`` with your own Narrativ account id.
+* Make sure to replace ``ACCOUNT ID`` with your own Howl account id.
 
-* Need your Narrativ account id? Reach out to your growth manager or solutions@narrativ.com for assistance.
+* Need your Howl account id? Reach out to your growth manager or solutions@planethowl.com for assistance.
 
 ::
 
@@ -262,7 +262,7 @@ Checkout Events
 In the same code editing view, place the following code snippet into the ``checkout.liquid`` layout (pictured below the
 snippet) and save your changes. 
 * Replace ``is_new_customer: <isNewCustomer>,`` with a boolean (true/false) indicating if the order is the customer’s first. If field is not available, replace ``<isNewCustomer>`` with ``null``. 
-* Remember to also replace ``ACCOUNT ID`` with your own Narrativ account id.
+* Remember to also replace ``ACCOUNT ID`` with your own Howl account id.
 
 **Please note:** to ensure the tag captures discount codes, include logic that checks for the presence of a discount
 code and applies it proportionally to the ``product_price`` variable. Discount codes should not be applied to the
@@ -312,15 +312,15 @@ Google Tag Manager Implementation
 ---------------------------------
 Page Impression Events
 ^^^^^^^^^^^^^^^^^^^^^^
-Create a new tag titled **Narrativ Impression Events** with a Custom HTML configuration:
+Create a new tag titled **Howl Impression Events** with a Custom HTML configuration:
 
 .. image:: _static/pixel_implementation_screenshots/gtm_1.png
 
 Copy and paste the following Javascript snippet in the HTML field (pictured below the snippet).
 
-* Make sure to replace ``ACCOUNT ID`` with your own Narrativ account id.
+* Make sure to replace ``ACCOUNT ID`` with your own Howl account id.
 
-* Need your Narrativ account id? Reach out to your growth manager or solutions@narrativ.com for assistance.
+* Need your Howl account id? Reach out to your growth manager or solutions@planethowl.com for assistance.
 
 ::
 
@@ -351,9 +351,9 @@ site (potential options pictured below).
 
 Checkout Events
 ^^^^^^^^^^^^^^^
-Create a second tag with a Custom HTML configuration titled **Narrativ Checkout Tag**. Copy and paste the following
+Create a second tag with a Custom HTML configuration titled **Howl Checkout Tag**. Copy and paste the following
 Javascript snippet in the HTML field (pictured below the snippet). Remember to also replace ``ACCOUNT ID`` with your
-own Narrativ account id.
+own Howl account id.
 
 **Please note**:
 
