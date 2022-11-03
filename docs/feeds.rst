@@ -4,7 +4,7 @@ Product Feeds
 Ingesting Product Feeds
 -----------------------
 
-In order for Narrativ to accurately match publisher recommendation links to a merchant's product, we require a
+In order for Howl to accurately match publisher recommendation links to a merchant's product, we require a
 comprehensive product feed. Depending on your preference, we can either fetch your feed or you can send it to us via
 HTTP, FTP or SFTP using the specifications detailed below. Feeds sent via FTP or SFTP should be scheduled for daily
 export.
