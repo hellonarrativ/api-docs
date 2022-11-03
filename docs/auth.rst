@@ -4,14 +4,14 @@ API Authentication
 Creating an API key
 -------------------
 
-To use the Narrativ API, you will need to create an API key for your user account.
+To use the Howl API, you will need to create an API key for your user account.
 Navigate to the `Developer Options`_ page and follow the directions there.
 
 
 Using your API key
 ------------------
 
-Unless otherwise indicated, Narrativ API requests must include a valid
+Unless otherwise indicated, Howl API requests must include a valid
 API key. Send your API key in the HTTP ``Authorization`` header, prefixed
 with the scheme ``NRTV-API-KEY``.
 For example::
@@ -70,7 +70,7 @@ Keeping your account secure
 ---------------------------
 
 Remember to keep your API key secret, since anyone who has it can use it to
-access your Narrativ account. If you ever lose your API key, you can visit the
+access your Howl account. If you ever lose your API key, you can visit the
 `Developer Options`_ page to disable it and create a new one.
 
 .. _Developer Options: https://dashboard.narrativ.com/#/account/developer
