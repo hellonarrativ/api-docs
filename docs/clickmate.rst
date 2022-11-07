@@ -22,7 +22,7 @@ ClickMate gives you another option. You would wrap the link in the form:
 
 ::
 
-   https://shop-links.co/link/?url=https%3A%2F%2Fdermstore.com.example%2Fshop%2Fproduct1234&publisher_slug=myacct&article_name=my-story
+   https://howl.me/link/?url=https%3A%2F%2Fdermstore.com.example%2Fshop%2Fproduct1234&publisher_slug=myacct&article_name=my-story
 
 
 The first time someone clicks that link, our system will create a SmartLink in your account if
@@ -35,6 +35,12 @@ on your site or all of the ones you want Narrativ to monetize. Our system will m
 your readers get to the appropriate destination while finding you all the best monetization opportunities.
 If the wrapping happens server side by your CMS, this will even work in no-javascript or ad-blocked
 environments like AMP.
+
+The legacy url domain of shop-links.co is still supported.
+
+::
+
+   https://shop-links.co/link/?url=https%3A%2F%2Fdermstore.com.example%2Fshop%2Fproduct1234&publisher_slug=myacct&article_name=my-story
 
 
 Query Params
@@ -90,7 +96,7 @@ In Javascript:
    var slug = 'myacct';
    var articleName = document.title;
    var articleUrl = window.location.href;
-   var clickmateUrl = 'https://shop-links.co/link?url=' + encodeURIComponent(url) +
+   var clickmateUrl = 'https://howl.me/link?url=' + encodeURIComponent(url) +
       '&publisher_slug=' + slug +
       '&article_name=' + encodeURIComponent(articleName) +
       '&article_url=' + encodeURIComponent(articleUrl);
