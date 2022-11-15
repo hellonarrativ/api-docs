@@ -40,7 +40,7 @@ The legacy url domain of shop-links.co is still supported.
 
 ::
 
-   https://shop-links.co/link/?url=https%3A%2F%2Fdermstore.com.example%2Fshop%2Fproduct1234&publisher_slug=myacct&article_name=my-story
+   https://shop-links.co/link/?url=https%3A%2F%2Fdermstore.com.example%2Fshop%2Fproduct1234&publisher_slug=myacct&article_name=my-story&article_url=https%3A%2F%2Fwww.mywebpage.com
 
 
 Query Params
