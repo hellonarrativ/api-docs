@@ -1,7 +1,7 @@
 Dynamic API
 ===========
 
-Create a new Narrativ Dynamic Link (SmartLink)
+Create a new Howl Dynamic Link (SmartLink)
 ----------------------------------------------
 
 Request

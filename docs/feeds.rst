@@ -71,7 +71,7 @@ Please generate and provide us with a public RSA key to register as an authorize
    * - Filename
      - USERNAME-USD-yyyy-mm-dd.csv.zip
 
-If you have any questions about product feed requirements, please feel free to reach out to solutions@narrativ.com
+If you have any questions about product feed requirements, please feel free to reach out to solutions@planethowl.com
 for assistance.
 
 .. _sample file: https://static.bam-x.com/api-docs/samplefeed.csv
