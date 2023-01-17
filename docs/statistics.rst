@@ -24,7 +24,7 @@ Request
 
    * - pub_id
      - integer
-     - Your publisher ID.
+     - Your publisher ID.  You can get this from the URL of your dashboard.
 
 .. list-table::
    :widths: 10 10 80
