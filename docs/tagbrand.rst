@@ -227,6 +227,10 @@ Populate the code snippet based on below requirements:
 
 Shopify Implementation
 ----------------------
+
+You may reference the following examples for implementing the tag on your Shopify site, but you may also roll your own
+implementation as long as it meets the requirements.
+
 Page Impression Events
 ^^^^^^^^^^^^^^^^^^^^^^
 On your Shopify home page, navigate to the **Edit code** option in the **Themes** section:
@@ -327,10 +331,11 @@ your Shopify admin page.
 
 .. image:: _static/pixel_implementation_screenshots/shopify_settings_checkout_and_accounts.png
 
-If the redirect after a customer successfully purchases a product is the order confirmation page, add the below script
-to the Order status page additional scripts section.
 
 Make sure to update ACCOUNT_ID with the Howl’s merch id. Do not add scripts to both sections unless directed to do so.
+
+If the redirect after a customer successfully purchases a product is the order confirmation page, add the below script
+to the Order status page additional scripts section.
 
 ::
 
@@ -374,6 +379,7 @@ Make sure to update ACCOUNT_ID with the Howl’s merch id. Do not add scripts to
        })(window, document, ACCOUNT_ID);
     </script>
 
+
 If the redirect after a customer successfully purchases a product is the post purchase page, add the below script
 to the Post-purchase page additional scripts section.
 
@@ -413,6 +419,7 @@ to the Post-purchase page additional scripts section.
            a.parentNode.insertBefore(b, a);
        })(window, document, ACCOUNT_ID);
     </script>
+
 
 Google Tag Manager Implementation
 ---------------------------------
