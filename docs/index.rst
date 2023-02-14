@@ -19,6 +19,7 @@ browse the full documentation below:
 
    auth
    requests
+   statistics
 
 .. toctree::
    :maxdepth: 2
@@ -28,6 +29,7 @@ browse the full documentation below:
    clickmate
    merchantfeeds
    utmsourcetracking
+   pubreport
 
 .. toctree::
    :maxdepth: 2
