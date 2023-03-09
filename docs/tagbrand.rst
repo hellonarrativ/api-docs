@@ -119,7 +119,7 @@ the ``order_value`` variable.
         product_brand: purchased[i].<ItemBrand>,
         product_size: purchased[i].<ItemSize>,
         product_color: purchased[i].<ItemColor>,
-        product_price: finalPrice,
+        product_price: finalPrice.toString(),
         product_quantity: purchased[i].<ItemQuantity>
       });
       orderTotal += (finalPrice * purchased[i].<ItemQuantity>);
