@@ -106,16 +106,23 @@ the ``order_value`` variable.
     var productsPurchased = [];
     var orderTotal = 0;
     for (var i = 0; i < purchased.length; i++) {
+      let finalPrice = parseFloat(purchased[i].<ItemPrice>);
+
+      <!-- Only do this if the product price does not include the discount. -->
+      if (purchased[i].<Discount>) {
+        finalPrice -= parseFloat(purchased[i].<Discount>)
+      }
+
       productsPurchased.push({
         product_id: purchased[i].<ItemID>,
         product_name: purchased[i].<ItemName>,
         product_brand: purchased[i].<ItemBrand>,
         product_size: purchased[i].<ItemSize>,
         product_color: purchased[i].<ItemColor>,
-        product_price: purchased[i].<ItemPrice>,
+        product_price: finalPrice,
         product_quantity: purchased[i].<ItemQuantity>
       });
-      orderTotal += (purchased[i].<ItemPrice> * purchased[i].<ItemQuantity>);
+      orderTotal += (finalPrice * purchased[i].<ItemQuantity>);
     }
 
     window.NRTV_EVENT_DATA = {
@@ -127,16 +134,16 @@ the ``order_value`` variable.
         currency: <CurrencyCode>
     };
 
-        (function (window, document, accountId) {
-            var b = document.createElement("script");
-            b.type = "text/javascript";
-            b.src = "https://static.narrativ.com/tags/narrativ-brand.1.0.0.js";
-            b.async = true;
-            b.id = 'nrtvTag';
-            b.setAttribute('data-narrativ-id', accountId);
-            var a = document.getElementsByTagName("script")[0];
-            a.parentNode.insertBefore(b, a);
-        })(window, document, ACCOUNT ID);
+    (function (window, document, accountId) {
+        var b = document.createElement("script");
+        b.type = "text/javascript";
+        b.src = "https://static.narrativ.com/tags/narrativ-brand.1.0.0.js";
+        b.async = true;
+        b.id = 'nrtvTag';
+        b.setAttribute('data-narrativ-id', accountId);
+        var a = document.getElementsByTagName("script")[0];
+        a.parentNode.insertBefore(b, a);
+    })(window, document, ACCOUNT ID);
   </script>
 
 Customize the Checkout Code to Your Site
