@@ -477,44 +477,50 @@ own Howl account id.
 ::
 
     <script type="text/javascript">
-        var purchased = <dataLayerProducts>;
-        var productsPurchased = [];
-        var orderTotal = 0;
-        for (var i = 0; i < purchased.length; i++) {
-          productsPurchased.push({
-            product_id: purchased[i].<ItemID>,
-            product_name: purchased[i].<ItemName>,
-            product_brand: purchased[i].<ItemBrand>,
-            product_size: purchased[i].<ItemSize>,
-            product_color: purchased[i].<ItemColor>,
-            product_price: purchased[i].<ItemPrice>,
-            product_quantity: purchased[i].<ItemQuantity>
-          });
-          orderTotal += (purchased[i].<ItemPrice> * purchased[i].<ItemQuantity>);
-        }
+       var purchased = dataLayer[0].ecommerce.purchase.products;
+       var productsPurchased = [];
+       var orderTotal = 0;
+       for (var i = 0; i < purchased.length; i++) {
+           let finalPrice = parseFloat(purchased[i].price);
 
-        window.NRTV_EVENT_DATA = {
-            page_type: 'checkout',
-            is_new_customer: <isNewCustomer>,
-            products_purchased: productsPurchased,
-            order_id: <OrderID>,
-            order_value: orderTotal,
-            currency: <CurrencyCode>
-        };
+           <!-- Only do this if the product price does not include the discount. -->
+           if (purchased[i].discount) {
+             finalPrice -= parseFloat(purchased[i].discount)
+           }
 
-            (function (window, document, accountId) {
-                var b = document.createElement("script");
-                b.type = "text/javascript";
-                b.src = "https://static.narrativ.com/tags/narrativ-brand.1.0.0.js";
-                b.async = true;
-                b.id = 'nrtvTag';
-                b.setAttribute('data-narrativ-id', accountId);
-                var a = document.getElementsByTagName("script")[0];
-                a.parentNode.insertBefore(b, a);
-            })(window, document, ACCOUNT ID);
+           productsPurchased.push({
+               product_id: purchased[i].product_id,
+               product_name: purchased[i].name,
+               product_brand: purchased[i].brand,
+               product_price: finalPrice.toString(),
+               product_quantity: purchased[i].quantity
+           });
+           orderTotal += (finalPrice * purchased[i].quantity);
+       }
+
+       window.NRTV_EVENT_DATA = {
+             page_type: 'checkout',
+             <!-- isNewCustomer should be a "Variable" set up in your GTM Workspace. -->
+             is_new_customer: {{ IsNewCustomer }},
+             products_purchased: productsPurchased,
+             order_id: dataLayer[0].ecommerce.purchase.order.id,
+             order_value: orderTotal,
+             currency: dataLayer[0].ecommerce.currency_code
+       };
+
+       (function (window, document, accountId) {
+           var b = document.createElement("script");
+           b.type = "text/javascript";
+           b.src = "https://static.narrativ.com/tags/narrativ-brand.1.0.0.js";
+           b.async = true;
+           b.id = 'nrtvTag';
+           b.setAttribute('data-narrativ-id', accountId);
+           var a = document.getElementsByTagName("script")[0];
+           a.parentNode.insertBefore(b, a);
+       })(window, document, ACCOUNT_ID);
     </script>
 
-.. image:: _static/pixel_implementation_screenshots/gtm_5.png
+.. image:: _static/pixel_implementation_screenshots/gtm_6.png
 
 Select “Checkout Page” as the correct trigger for these events and save your changes. Publish both the Impression &
 Checkout tags to your live environment.
