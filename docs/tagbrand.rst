@@ -275,7 +275,8 @@ Checkout Events
 Follow this section if your store is using Shopify Plus.
 
 In the same code editing view as the page impression implementation, place the following code snippet into the
-``checkout.liquid`` layout (pictured below the snippet) and save your changes.
+``checkout.liquid`` layout (pictured below the snippet) and save your changes. Make sure the code snippet lives in the
+html ``body`` tag within ``checkout.liquid``.
 
 * Replace ``is_new_customer: <isNewCustomer>,`` with a boolean (true/false) indicating if the order is the customer’s first. If field is not available, replace ``<isNewCustomer>`` with ``null``.
 * Remember to also replace ``ACCOUNT ID`` with your own Howl account id.
@@ -287,7 +288,7 @@ code and applies it proportionally to the ``product_price`` variable. Discount c
 ::
 
     <script type="text/javascript">
-       var purchased = Shopify.checkout.line_items;
+       var purchased = window.Shopify.checkout.line_items;
        var productsPurchased = [];
        var orderTotal = 0;
        for (var i = 0; i < purchased.length; i++) {
@@ -310,9 +311,9 @@ code and applies it proportionally to the ``product_price`` variable. Discount c
              page_type: 'checkout',
              is_new_customer: <isNewCustomer>,
              products_purchased: productsPurchased,
-             order_id: Shopify.checkout.order_id.toString(),
+             order_id: window.Shopify.checkout.order_id.toString(),
              order_value: orderTotal,
-             currency: Shopify.checkout.presentment_currency
+             currency: window.Shopify.checkout.presentment_currency
        };
        (function (window, document, accountId) {
            var b = document.createElement("script");
@@ -347,7 +348,7 @@ to the Order status page additional scripts section.
 ::
 
     <script type="text/javascript">
-       var purchased = Shopify.checkout.line_items;
+       var purchased = window.Shopify.checkout.line_items;
        var productsPurchased = [];
        var orderTotal = 0;
        for (var i = 0; i < purchased.length; i++) {
@@ -370,9 +371,9 @@ to the Order status page additional scripts section.
              page_type: 'checkout',
              is_new_customer: <isNewCustomer>,
              products_purchased: productsPurchased,
-             order_id: Shopify.checkout.order_id.toString(),
+             order_id: window.Shopify.checkout.order_id.toString(),
              order_value: orderTotal,
-             currency: Shopify.checkout.presentment_currency
+             currency: window.Shopify.checkout.presentment_currency
        };
        (function (window, document, accountId) {
            var b = document.createElement("script");
