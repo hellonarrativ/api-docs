@@ -170,7 +170,7 @@ Populate the code snippet based on below requirements:
      - Replace ``<ItemID>`` with the variable name your data layer uses to define item ID, or the unique identifier
        for the purchased product. This can likely be found in the ``dataLayerProducts`` array described above.
      - String
-     -
+     - This must match exactly with the id column in the product feed
 
    * - ``product_name: purchased[i].<ItemName>,``
      - Replace ``<ItemName>`` with the variable name your data layer uses to define item name, or the name
