@@ -26,8 +26,8 @@ ClickMate gives you another option. You would wrap the link in the form:
 
 
 On click, our system will create a SmartLink in your account if
-`dermstore.com.example` is one of the domains we handle for you. The link is matched and an auction takes place 
-on the link in order to redirect to the appropriate destination. If there is no auction,
+`dermstore.com.example` is one of the domains we handle for you. If the link is matched, an auction takes place 
+on the link in order to redirect to the appropriate destination. If there is no match or auction,
 the link will just be redirected to the original URL.
 
 The ideal usage for this is to set up a programmatic integration--either wrap all commerce links
