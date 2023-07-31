@@ -536,6 +536,6 @@ Checkout tags to your live environment.
 
 .. _Google category: https://support.google.com/merchants/answer/6324436?hl=en
 .. _ISO 4217: https://www.iso.org/iso-4217-currency-codes.html
-.. _Web Implementation: https://docs.narrativ.com/en/stable/tagbrand.html#web-implementation
-.. _Shopify Implementation: https://docs.narrativ.com/en/stable/tagbrand.html#shopify-implementation
-.. _Google Tag Manager Implementation: https://docs.narrativ.com/en/stable/tagbrand.html#google-tag-manager-implementation
+.. _Web Implementation: https://docs.planethowl.com/en/stable/tagbrand.html#web-implementation
+.. _Shopify Implementation: https://docs.planethowl.com/en/stable/tagbrand.html#shopify-implementation
+.. _Google Tag Manager Implementation: https://docs.planethowl.com/en/stable/tagbrand.html#google-tag-manager-implementation
