@@ -104,5 +104,5 @@ In Javascript:
       '&article_url=' + encodeURIComponent(articleUrl);
 
 
-.. _contact us: mailto:support@planethowl.com
+.. _contact us: mailto:hello@planethowl.com
 .. _URL Encoder: https://www.urlencoder.org/
