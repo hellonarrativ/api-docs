@@ -66,7 +66,7 @@ Response
 
    * - smart_link_url
      - string
-     - The URL of the SmartLink, which should be substituted for the original link in your article. This is the monetized Narrativ link.
+     - The URL of the SmartLink, which should be substituted for the original link in your article. This is the monetized Howl link.
 
 Example
 ^^^^^^^

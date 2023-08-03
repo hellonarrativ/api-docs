@@ -194,4 +194,4 @@ solutions@planethowl.com for more details.
 **Please note**: This implementation is specific to tag integrations.
 For using U1 Parameters with a Clickmate integration, see `Clickmate Query Parameters`_.
 
-.. _Clickmate Query Parameters: https://docs.narrativ.com/en/stable/clickmate.html#query-params
+.. _Clickmate Query Parameters: https://docs.planethowl.com/en/stable/clickmate.html#query-params

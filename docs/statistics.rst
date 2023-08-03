@@ -62,7 +62,7 @@ Request
 
    * - out_of_network
      - boolean
-     - Optional: If set to true, return data for other networks in addition to the Narrativ network. Default value is false.
+     - Optional: If set to true, return data for other networks in addition to the Howl network. Default value is false.
 
 Response
 ^^^^^^^^
@@ -80,7 +80,7 @@ having the following structure:
 
    * - advertiser_name
      - string
-     - The full name of the advertiser. Will default to ``null`` if the advertiser is outside the Narrativ merchant network.
+     - The full name of the advertiser. Will default to ``null`` if the advertiser is outside the Howl merchant network.
 
    * - article_name
      - string
