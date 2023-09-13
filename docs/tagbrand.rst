@@ -61,6 +61,32 @@ order details in the Request Payload:
 Discount Code Logic
 ^^^^^^^^^^^^^^^^^^^
 Place an additional test order with a coupon code to ensure the product price variables accurately capture any discounts.
+You can verify the product price in two ways:
+
+| **Viewing Network Requests:**
+
+1. Open the Chrome Developer Tools on Google Chrome before placing the checkout.
+2. Click the *Network* tab and filter by "narrativ".
+3. Complete the checkout with a discount code and wait until all redirects have completed. You should be on the order confirmation or order status page.
+4. Click the POST request URL in the form *https://events.release.narrativ.com/api/v0/merchants/<id>/interactions/checkout/?uid_bam=<uid>*.
+
+.. image:: _static/pixel_implementation_screenshots/discount_1.png
+
+5. Click the *Payload* tab and expand the request details.
+6. The list of products should have prices that reflect the discount in the order.
+
+.. image:: _static/pixel_implementation_screenshots/discount_2.png
+
+| **Using Chrome Console:**
+
+1. Complete the checkout with a discount code and wait until all redirects have completed. You should be on the order confirmation or order status page.
+2. Open the Chrome Developer Tools on Google Chrome and select the Console tab.
+3. Type window.NRTV_EVENT_DATA in the console and hit the Enter key on your keyboard.
+4. Expand the details.
+5. The list of products should have prices that reflect the discount in the order.
+
+.. image:: _static/pixel_implementation_screenshots/discount_3.png
+
 
 Web Implementation
 ---------------------
@@ -95,12 +121,6 @@ Checkout Events
 Place the following code snippet on your site’s order confirmation page, or the page displayed to customers immediately
 after they’ve successfully purchased their items. The code should be populated with order and product purchased details
 pertaining to your data layer. Remember to also replace ``ACCOUNT ID`` with your own Howl account id.
-
-| **Discounts**
-
-To ensure the tag captures discount codes, include logic that checks for the presence of a discount
-code and applies it proportionally to the ``product_price`` variable. Discount codes should not be applied to
-the ``order_value`` variable.
 
 ::
 
@@ -148,6 +168,12 @@ the ``order_value`` variable.
         a.parentNode.insertBefore(b, a);
     })(window, document, ACCOUNT ID);
   </script>
+
+Discount Code Logic
+^^^^^^^^^^^^^^^^^^^
+To ensure the tag captures discount codes, include logic that checks for the presence of a discount
+code and applies it proportionally to the ``product_price`` variable. Discount codes do not need to be applied to
+the ``order_value`` variable.
 
 Customize the Checkout Code to Your Site
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -290,12 +316,6 @@ Name the pixel "Howl Checkout" and click *Add pixel*.
 
 Add the following snippet to the *Code* section of the custom pixel. Replace ACCOUNT_ID with your Howl account id.
 
-| **Discounts**
-
-To ensure the tag captures discount codes, include logic that checks for the presence of a discount
-code and applies it proportionally to the ``product_price`` variable. Discount codes should not be applied to
-the ``order_value`` variable.
-
 ::
 
     // Step 1. Add and initialize your third-party JavaScript pixel (make sure to exclude HTML)
@@ -357,6 +377,12 @@ Once the code is added, click *Save* on the top right, then click *Connect*. The
 
 .. image:: _static/pixel_implementation_screenshots/shopify_implementation_8.png
 
+Discount Code Logic
+^^^^^^^^^^^^^^^^^^^
+To ensure the tag captures discount codes, include logic that checks for the presence of a discount
+code and applies it proportionally to the ``product_price`` variable. Discount codes do not need to be applied to
+the ``order_value`` variable.
+
 
 Google Tag Manager Implementation
 ---------------------------------
@@ -404,12 +430,6 @@ Checkout Events
 Create a second tag with a Custom HTML configuration titled **Howl Checkout Tag**. Copy and paste the following
 Javascript snippet in the HTML field (pictured below the snippet). Remember to also replace ``ACCOUNT ID`` with your
 own Howl account id.
-
-| **Discounts**
-
-To ensure the tag captures discount codes, include logic that checks for the presence of a discount
-code and applies it proportionally to the ``product_price`` variable. Discount codes should not be applied to
-the ``order_value`` variable.
 
 * ``var purchased`` should be set to the data layer variable corresponding to products purchased at checkout. This can be defined independent of GTM variables (see previous screenshot), or it can be found in the **Variables** section of your Tag Manager dashboard. GTM variables referenced in the checkout tag should be wrapped in doubly curly brackets.
 
@@ -460,6 +480,12 @@ the ``order_value`` variable.
     </script>
 
 .. image:: _static/pixel_implementation_screenshots/gtm_6.png
+
+Discount Code Logic
+^^^^^^^^^^^^^^^^^^^
+To ensure the tag captures discount codes, include logic that checks for the presence of a discount
+code and applies it proportionally to the ``product_price`` variable. Discount codes do not need to be applied to
+the ``order_value`` variable.
 
 Select “Checkout Page” as the correct trigger for these events and save your changes. Publish both the Impression &
 Checkout tags to your live environment.
