@@ -1,15 +1,22 @@
 Publisher Report
 ================
 
-The Publisher Report contains click and order data.
-It is published to an S3 bucket accessible by the partner.
-The report is published on configurable interval which defaults to 24 hours.
+The Publisher Reports contain clicks, orders and returns data.
+The reports are published to an FTP/SFTP location/ S3 bucket accessible by the partner.
+The reports is published on configurable interval which defaults to 24 hours.
 Each interval publishes data for the last 7 days.
+
 The naming convention is:
 
 * Prefix: ``/<key>/YYYY/MM/`` (defaults to slug)
 * Clicks: ``narrativ_log_files_clicks_YYYYMMDD HH:00.csv``
+- The report date indicates the clicks in the report took place on that date
+
 * Orders: ``narrativ_log_files_orders_YYYYMMDD HH:00.csv``
+- The report date indicates the orders/checkouts in the report took place on that date
+
+* Returns: ``narrativ_log_files_orders_YYYYMMDD HH:00.csv``
+- The report date indicates the returns in the report were processed on that date
 
 The partner's report reader should be compatible with Python's ``csv.DictWriter``
 
@@ -94,3 +101,27 @@ country_code                 ISO 3166-2 Country code
 click_id                     Unique identifier for each click event attributed to this checkout
 click_timestamp              Date time in GMT of the click attributed to this checkout
 ===========================  ===========
+
+Returns
+^^^^^^
+
+===========================  ===========
+Column                       Description
+===========================  ===========
+order_product_id            Foreign key to join to Orders Report, unique to checkout_id and purchased_product_id combination
+checkout_timestamp          Timestamp of checkout
+purchased_product_id        Unique identifier for product returned
+checkout_id                 Identifier of the checkout returned from the Merchant
+merchant                    Merchant name
+publication                 Publisher Name
+return_revenue              Revenue associated with product items returned
+return_earnings             Earnings associated with product items returned
+return_quantity             Quantity of product items returned
+return_datetime             Datetime of return's/partial return's processing
+return_id                   Unique identifier for the return/partial return for this product on this day
+
+
+
+
+
+
