@@ -2,49 +2,57 @@ Publisher Report
 ================
 
 The Publisher Reports consist of the Clicks, Orders and Returns reports.
+
 These reports contain detailed information about clicks, purchases, returns, attribution, and
 earnings.
-The reports can be published to an FTP/SFTP location/S3/GCP bucket accessible by the partner.
+
+The reports can be published to an FTP/SFTP location or cloud storage bucket (S3/GCS) accessible by the partner.
+
 The reports is published on configurable interval which defaults to 24 hours.
+
 Each interval publishes data for the last 7 days.
 
 The naming convention for each of the reports is:
 
 * Prefix: ``/<key>/YYYY/MM/`` (defaults to slug)
 
-* Clicks: ``narrativ_log_files_clicks_YYYYMMDD HH:00.csv``
-- The date in the filename indicates the clicks in the report took place on that date
+* Clicks: ``narrativ_log_files_clicks_YYYYMMDD.csv``. The date in the filename indicates the clicks in the report took place on that date
 
-* Orders: ``narrativ_log_files_orders_YYYYMMDD HH:00.csv``
-- The date in the filename indicates the orders/checkouts in the report took place on that date
+* Orders: ``narrativ_log_files_orders_YYYYMMDD.csv``. The date in the filename indicates the orders/checkouts in the report took place on that date
 
-* Returns: ``narrativ_log_files_orders_YYYYMMDD HH:00.csv``
-- The date in the filename indicates the returns in the report were processed on that date
+* Returns: ``narrativ_log_files_orders_YYYYMMDD.csv``. The date in the filename indicates the returns in the report were processed on that date
 
 The partner's report reader should be compatible with Python's ``csv.DictWriter``
 
 Contact your account manager to get started.
 
 Schema and File Format
-------
+----------------------
 
 Clicks
 ^^^^^^
 The Click File contains information about Clicks and Impressions for that day, separated by
 each event occurrence. For example, each click or impression will be a new row.
-This table can be used to identify -
+
+This table can be used to identify:
+
 * Information about Clicks (ex. Number of clicks a given day)
+
 * Information about Impressions (ex. Number of impressions on a given day)
+
 * Earnings from CPC campaigns and clients
 
 
 *What to expect in the Clicks report*
 
 Let's break it down with an example:
+
 * Link 987 received 2 clicks on day 1 and 4 clicks on day 2
 
 The Clicks reports would look like:
+
 * On Day 1 two rows for link_id 987 with associated click information including earnings (if any)
+
 * On Day 2 four rows for link_id 987 with associated click information including earnings (if any)
 
 ======================  ===========
@@ -82,24 +90,36 @@ Orders
 ^^^^^^
 The Orders File contains information about orders (checkouts) for that day. Each product
 purchased has its own row in this file, thus there may be multiple records associated with one checkout in the file.
+
 This table can be used to identify -
+
 * Information about Orders (ex. Number of orders a given day)
+
 * Earnings from EPP campaigns and clients
+
 
 *What to expect in the Orders report*
 
 Let's break it down with an example:
+
 * Checkout 123 is attributed to a publication, and included :
+
 - product A1 with a quantity of 4, earnings 40, revenue 400, and
+
 - product B1 with a quantity of 1, earning 15 and revenue 150
 
 and
+
 * Checkout 321 is attributed to a publication, and included :
+
 - product A1 with a quantity of 1, earnings 10, revenue 100, and
 
 The Orders reports would look like:
+
 * One row for checkout ID 123 and product ID A1 with number_products_purchased 4, earnings 40, revenue 400.
+
 * One row for checkout ID 123 and product ID B1 with number_products_purchased 1, earnings 15, revenue 150.
+
 * One row for the checkout ID 321  and product ID A1 with number_products_purchased 1, earnings 10, revenue 100.
 
 
@@ -143,16 +163,16 @@ click_id                     Unique identifier for each click event attributed t
 click_timestamp              Date time in GMT of the click attributed to this checkout
 ===========================  ===========
 
+
 Returns
-^^^^^^
+^^^^^^^
 The Returns File contains information about returns processed on that day from orders (checkouts) attributed
 to the publisher at specific merchant partners in the past. This report operates at a day level and captures the
 returns processed on a particular day, regardless of when the original checkout occurred. The returns can be partial
 or full, and can be broken over multiple days.
-The report contains unique rows for each product returned in the order as they are processed,
-even if multiple products from the same checkout are returned and processed separately. Each row will include
-information about the number of items returned(quantity), the amount of earnings borne from the items returned,
-and the revenue associated with the returned items.
+
+The report contains unique rows for each product returned in the order as they are processed, even if multiple products from the same checkout are returned and processed separately.
+Each row will include information about the number of items returned(quantity), the amount of earnings borne from the items returned, and the revenue associated with the returned items.
 Since the data in these reports pertains to returns, the earnings, revenue and quantity values are negative.
 
 To gain a comprehensive view of returns, we recommend aggregating the values for each unique combination of
@@ -162,23 +182,34 @@ Since this report is designed to be used to complement the data in the orders re
 can be used to join to the orders report.
 
 This table can be used to identify -
+
 * Quantity of products returned
+
 * Earnings and revenue from the returned products
+
 
 *What to expect in the Returns Report*
 
 Let's break it down with an example:
+
 Checkout 123 is attributed to a publication, and originally included :
+
 * product A1 with a quantity of 4, earnings 40, revenue 400, and
+
 * product B1 with a quantity of 1, earning 15 and revenue 150
-The customer returns
+
+The customer returns:
+
 * 2 quantity of product A1 on day 1, and
+
 * 1 quantity of product A1 and 1 quantity of product B1 on day 2.
 
 The Returns reports would look like:
+
 * One row in the report for day 1 for checkout ID 123 and product ID A1 with quantity -2, earnings -20, revenue -200.
-* One row in the report for day 2 for the checkout ID 123  and product ID A1 with quantity -1, earnings -10, revenue -100
-and one row for the checkout ID 123 and product ID B1 with quantity -1, earnings -15, revenue -150.
+
+* One row in the report for day 2 for the checkout ID 123  and product ID A1 with quantity -1, earnings -10, revenue -100 and one row for the checkout ID 123 and product ID B1 with quantity -1, earnings -15, revenue -150.
+
 
 When combining the returns information with the orders information, make sure to group the returns information
 by order_product_id or checkout_id-merchant-product_id first. Then, join it with the orders data,
@@ -187,24 +218,24 @@ to avoid missing data regarding partial returns that may be processed over multi
 ===========================  ===========
 Column                       Description
 ===========================  ===========
-order_product_id            Foreign key to join to Orders Report, unique to checkout_id,merchant and purchased_product_id combination
-checkout_timestamp          Timestamp of checkout
-purchased_product_id        Unique identifier for product returned
-checkout_id                 Identifier of the checkout returned from the Merchant
-merchant                    Merchant name
-publication                 Publisher Name
-return_revenue              Revenue associated with product items returned
-return_earnings             Earnings associated with product items returned
-return_quantity             Quantity of product items returned
-return_datetime             Datetime of return's/partial return's processing
-return_id                   Unique identifier for the return/partial return for this product on this day
-
+order_product_id             Foreign key to join to Orders Report, unique to checkout_id,merchant and purchased_product_id combination
+checkout_timestamp           Timestamp of checkout
+purchased_product_id         Unique identifier for product returned
+checkout_id                  Identifier of the checkout returned from the Merchant
+merchant                     Merchant name
+publication                  Publisher Name
+return_revenue               Revenue associated with product items returned
+return_earnings              Earnings associated with product items returned
+return_quantity              Quantity of product items returned
+return_datetime              Datetime of return's/partial return's processing
+return_id                    Unique identifier for the return/partial returns for this checkout on this day
+===========================  ===========
 
 Example Data Queries
-------
+--------------------
 
 Calculate earnings by payment model
-^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To calculate the CPC earnings, use the Clicks file, and sum up the earnings column. This file
 contains only the CPC earnings as only CPC pays on click.
 
@@ -237,7 +268,7 @@ query and fragment portions).
 Similarly, clicked_product_name can be used to pivot data on a product basis.
 
 Calculate earnings per product
-^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The earnings per product in an order can be calculated using the formula below -
 earnings_per_product = total_order_earnings * (purchased_product_price *
 number_products_purchased / total_order_revenue)
