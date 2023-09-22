@@ -20,7 +20,7 @@ The naming convention for each of the reports is:
 
 * Orders: ``narrativ_log_files_orders_YYYYMMDD.csv``. The date in the filename indicates the orders/checkouts in the report took place on that date
 
-* Returns: ``narrativ_log_files_orders_YYYYMMDD.csv``. The date in the filename indicates the returns in the report were processed on that date
+* Returns: ``narrativ_log_files_returns_YYYYMMDD.csv``. The date in the filename indicates the returns in the report were processed on that date
 
 The partner's report reader should be compatible with Python's ``csv.DictWriter``
 
