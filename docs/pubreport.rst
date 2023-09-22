@@ -167,7 +167,7 @@ click_timestamp              Date time in GMT of the click attributed to this ch
 Returns
 ^^^^^^^
 The Returns File contains information about returns processed on that day from orders (checkouts) attributed
-to the publisher at specific merchant partners in the past. This report operates at a day level and captures the
+to the publisher at specific merchant partners in the past. This report captures the
 returns processed on a particular day, regardless of when the original checkout occurred. The returns can be partial
 or full, and can be broken over multiple days.
 
