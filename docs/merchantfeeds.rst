@@ -6,7 +6,7 @@ Merchant Feeds
 Overview
 --------
 
-Narrativ provides the ability for our publisher partners to download merchant feeds in a standardized format for
+Howl provides the ability for our publisher partners to download merchant feeds in a standardized format for
 monetization.  This enables product data to be integrated into your CMS, allowing for more control over monetization
 decisions and integration of multi-button formats.
 
@@ -109,7 +109,7 @@ Please make note of below formatting standards when ingesting the product feeds:
 Feed Delivery
 -------------
 
-Narrativ supports two methods of feed delivery:
+Howl supports two methods of feed delivery:
 
 **Amazon S3:**
 Feeds will be delivered in a shared S3 bucket configured to have a sub-folder for each merchant.
@@ -127,7 +127,7 @@ Configuring the URLs
 ____________________
 
 Product URLs contained in feed must be wrapped in our click wrapper (`Clickmate`_) before publishing to the site.
-This ensures the link is properly monetized with Narrativ tracking appended on click.
+This ensures the link is properly monetized with Howl tracking appended on click.
 
 Publisher JS Tag
 ________________
@@ -139,8 +139,8 @@ Additionally, the JS Tag unlocks higher rates by enabling impressions tracking a
 Getting Started
 _______________
 
-Please contact your account manager or support@narrativ.com and we will reach out with next steps.
+Please contact your account manager or support@planethowl.com and we will reach out with next steps.
 
-.. _Clickmate: https://docs.narrativ.com/en/stable/clickmate.html
+.. _Clickmate: https://docs.planethowl.com/en/stable/clickmate.html
 
-.. _Publisher JS Tag: https://docs.narrativ.com/en/stable/tagpublisher.html
+.. _Publisher JS Tag: https://docs.planethowl.com/en/stable/tagpublisher.html

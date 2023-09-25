@@ -8,8 +8,8 @@ Overview
 
 ClickMate provides a wrapper that you can use on any link to convert
 it, on the fly, to a SmartLink. This means that the link will go through our
-matching process, and on future clicks will work through our real time
-auction system and will re-route to the most beneficial advertiser.
+matching process and clicks will work through our real time
+auction system to re-route to the most beneficial advertiser.
 
 
 
@@ -25,13 +25,13 @@ ClickMate gives you another option. You would wrap the link in the form:
    https://howl.me/link/?url=https%3A%2F%2Fdermstore.com.example%2Fshop%2Fproduct1234&publisher_slug=myacct&article_name=my-story
 
 
-The first time someone clicks that link, our system will create a SmartLink in your account if
-`dermstore.com.example` is one of the domains we handle for you. On subsequent clicks, if the link is
-matched and an auction takes place, the destination will be redirected. If there is no auction,
+On click, our system will create a SmartLink in your account if
+`dermstore.com.example` is one of the domains we handle. If the link is matched, an auction takes place 
+on the link in order to redirect to the appropriate destination. If there is no match or auction,
 the link will just be redirected to the original URL.
 
 The ideal usage for this is to set up a programmatic integration--either wrap all commerce links
-on your site or all of the ones you want Narrativ to monetize. Our system will make sure that
+on your site or all of the ones you want Howl to monetize. Our system will make sure that
 your readers get to the appropriate destination while finding you all the best monetization opportunities.
 If the wrapping happens server side by your CMS, this will even work in no-javascript or ad-blocked
 environments like AMP.
@@ -42,6 +42,8 @@ The legacy url domain of shop-links.co is still supported.
 
    https://shop-links.co/link/?url=https%3A%2F%2Fdermstore.com.example%2Fshop%2Fproduct1234&publisher_slug=myacct&article_name=my-story&article_url=https%3A%2F%2Fwww.mywebpage.com
 
+
+Contact support to have clickmate enabled for your accounts.
 
 Query Params
 --------------------------
@@ -68,7 +70,7 @@ Query Params
 
    * - publisher_slug
      - string(64)
-     - *Required* The slug provided by your Narrativ account rep. Without this we will not know what account to monetize clicks for.
+     - *Required* The slug provided by your Howl account rep. Without this we will not know what account to monetize clicks for.
 
    * - exclusive
      - Integer
@@ -102,5 +104,5 @@ In Javascript:
       '&article_url=' + encodeURIComponent(articleUrl);
 
 
-.. _contact us: mailto:hello@narrativ.com
+.. _contact us: mailto:hello@planethowl.com
 .. _URL Encoder: https://www.urlencoder.org/

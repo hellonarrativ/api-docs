@@ -58,8 +58,35 @@ order details in the Request Payload:
 
 .. image:: _static/pixel_implementation_screenshots/test_checkouts_2.png
 
-**Please note:** We recommend placing an additional test order with a coupon code to ensure the product price variables
-accurately capture any discounts.
+Discount Code Logic
+^^^^^^^^^^^^^^^^^^^
+Place an additional test order with a coupon code to ensure the product price variables accurately capture any discounts.
+You can verify the product price in two ways:
+
+| **Viewing Network Requests:**
+
+1. Open the Chrome Developer Tools on Google Chrome before placing the checkout.
+2. Click the *Network* tab and filter by "narrativ".
+3. Complete the checkout with a discount code and wait until all redirects have completed. You should be on the order confirmation or order status page.
+4. Click the POST request URL in the form *https://events.release.narrativ.com/api/v0/merchants/<id>/interactions/checkout/?uid_bam=<uid>*.
+
+.. image:: _static/pixel_implementation_screenshots/discount_1.png
+
+5. Click the *Payload* tab and expand the request details.
+6. The list of products should have prices that reflect the discount in the order.
+
+.. image:: _static/pixel_implementation_screenshots/discount_2.png
+
+| **Using Chrome Console:**
+
+1. Complete the checkout with a discount code and wait until all redirects have completed. You should be on the order confirmation or order status page.
+2. Open the Chrome Developer Tools on Google Chrome and select the Console tab.
+3. Type window.NRTV_EVENT_DATA in the console and hit the Enter key on your keyboard.
+4. Expand the details.
+5. The list of products should have prices that reflect the discount in the order.
+
+.. image:: _static/pixel_implementation_screenshots/discount_3.png
+
 
 Web Implementation
 ---------------------
@@ -95,10 +122,6 @@ Place the following code snippet on your site’s order confirmation page, or th
 after they’ve successfully purchased their items. The code should be populated with order and product purchased details
 pertaining to your data layer. Remember to also replace ``ACCOUNT ID`` with your own Howl account id.
 
-**Please note:** to ensure the tag captures discount codes, include logic that checks for the presence of a discount
-code and applies it proportionally to the ``product_price`` variable. Discount codes should not be applied to
-the ``order_value`` variable.
-
 ::
 
   <script type="text/javascript">
@@ -106,16 +129,23 @@ the ``order_value`` variable.
     var productsPurchased = [];
     var orderTotal = 0;
     for (var i = 0; i < purchased.length; i++) {
+      let finalPrice = parseFloat(purchased[i].<ItemPrice>);
+
+      <!-- Only do this if the product price does not include the discount. -->
+      if (purchased[i].<Discount>) {
+        finalPrice -= parseFloat(purchased[i].<Discount>)
+      }
+
       productsPurchased.push({
         product_id: purchased[i].<ItemID>,
         product_name: purchased[i].<ItemName>,
         product_brand: purchased[i].<ItemBrand>,
         product_size: purchased[i].<ItemSize>,
         product_color: purchased[i].<ItemColor>,
-        product_price: purchased[i].<ItemPrice>,
+        product_price: finalPrice.toString(),
         product_quantity: purchased[i].<ItemQuantity>
       });
-      orderTotal += (purchased[i].<ItemPrice> * purchased[i].<ItemQuantity>);
+      orderTotal += (finalPrice * purchased[i].<ItemQuantity>);
     }
 
     window.NRTV_EVENT_DATA = {
@@ -127,17 +157,23 @@ the ``order_value`` variable.
         currency: <CurrencyCode>
     };
 
-        (function (window, document, accountId) {
-            var b = document.createElement("script");
-            b.type = "text/javascript";
-            b.src = "https://static.narrativ.com/tags/narrativ-brand.1.0.0.js";
-            b.async = true;
-            b.id = 'nrtvTag';
-            b.setAttribute('data-narrativ-id', accountId);
-            var a = document.getElementsByTagName("script")[0];
-            a.parentNode.insertBefore(b, a);
-        })(window, document, ACCOUNT ID);
+    (function (window, document, accountId) {
+        var b = document.createElement("script");
+        b.type = "text/javascript";
+        b.src = "https://static.narrativ.com/tags/narrativ-brand.1.0.0.js";
+        b.async = true;
+        b.id = 'nrtvTag';
+        b.setAttribute('data-narrativ-id', accountId);
+        var a = document.getElementsByTagName("script")[0];
+        a.parentNode.insertBefore(b, a);
+    })(window, document, ACCOUNT ID);
   </script>
+
+Discount Code Logic
+^^^^^^^^^^^^^^^^^^^
+To ensure the tag captures discount codes, include logic that checks for the presence of a discount
+code and applies it proportionally to the ``product_price`` variable. Discount codes do not need to be applied to
+the ``order_value`` variable.
 
 Customize the Checkout Code to Your Site
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -227,6 +263,10 @@ Populate the code snippet based on below requirements:
 
 Shopify Implementation
 ----------------------
+
+You may reference the following examples for implementing the tag on your Shopify site, but you may also roll your own
+implementation as long as it meets the requirements.
+
 Page Impression Events
 ^^^^^^^^^^^^^^^^^^^^^^
 On your Shopify home page, navigate to the **Edit code** option in the **Themes** section:
@@ -259,54 +299,90 @@ the snippet) and save your changes.
 
 Checkout Events
 ^^^^^^^^^^^^^^^
-In the same code editing view, place the following code snippet into the ``checkout.liquid`` layout (pictured below the
-snippet) and save your changes. 
-* Replace ``is_new_customer: <isNewCustomer>,`` with a boolean (true/false) indicating if the order is the customer’s first. If field is not available, replace ``<isNewCustomer>`` with ``null``. 
-* Remember to also replace ``ACCOUNT ID`` with your own Howl account id.
+In order to integrate the checkout tag within Shopify, Shopify recommends using pixel apps or custom pixels found in the
+Customer events settings.
 
-**Please note:** to ensure the tag captures discount codes, include logic that checks for the presence of a discount
-code and applies it proportionally to the ``product_price`` variable. Discount codes should not be applied to the
-``order_value`` variable.
+Click the *Settings* button on the bottom left of the navigation bar on the Shopify store home page.
+
+.. image:: _static/pixel_implementation_screenshots/shopify_implementation_4.png
+
+Once the setting modal is visible, click on *Customer events* and then click *Add custom pixel*.
+
+.. image:: _static/pixel_implementation_screenshots/shopify_implementation_5.png
+
+Name the pixel "Howl Checkout" and click *Add pixel*.
+
+.. image:: _static/pixel_implementation_screenshots/shopify_implementation_6.png
+
+Add the following snippet to the *Code* section of the custom pixel. Replace ACCOUNT_ID with your Howl account id.
 
 ::
 
-  <script type="text/javascript">
-        var purchased = Shopify.checkout.line_items;
-        var productsPurchased = [];
-        var orderTotal = 0;
-        for (var i = 0; i < purchased.length; i++) {
-          productsPurchased.push({
-            product_id: purchased[i].product_id.toString(),
-            product_name: purchased[i].title,
-            product_brand: purchased[i].vendor,
-            product_price: purchased[i].price,
-            product_quantity: purchased[i].quantity
-          });
-          orderTotal += (purchased[i].price * purchased[i].quantity);
+    // Step 1. Add and initialize your third-party JavaScript pixel (make sure to exclude HTML)
+    function checkoutPixel(eventData) {
+      var checkoutData = eventData.checkout;
+      var purchased = checkoutData.lineItems;
+      var productsPurchased = [];
+      var orderTotal = 0;
+
+      for (var i = 0; i < purchased.length; i++) {
+        var productPrice = purchased[i].variant.price.amount;
+        if (purchased[i].discountAllocations.length) {
+          for (var j = 0; j < purchased[i].discountAllocations.length; j++) {
+            productPrice -= parseFloat(purchased[i].discountAllocations[j].amount.amount);
+          }
         }
+        productsPurchased.push({
+          product_id: purchased[i].variant.product.id,
+          product_name: purchased[i].variant.product.title,
+          product_brand: purchased[i].variant.product.vendor,
+          product_price: parseFloat(productPrice).toFixed(2),
+          product_quantity: purchased[i].quantity
+        });
+        orderTotal += parseFloat(productPrice) * purchased[i].quantity;
+      }
 
-         window.NRTV_EVENT_DATA = {
-        	page_type: 'checkout',
-        	is_new_customer: <isNewCustomer>,
-          	products_purchased: productsPurchased,
-          	order_id: Shopify.checkout.order_id.toString(),
-        	order_value: orderTotal,
-        	currency: Shopify.checkout.presentment_currency
-    	};
+      window.NRTV_EVENT_DATA = {
+        page_type: 'checkout',
+        is_new_customer: null,
+        products_purchased: productsPurchased,
+        order_id: checkoutData.order.id,
+        order_value: parseFloat(orderTotal).toFixed(2),
+        currency: checkoutData.currencyCode,
+      };
 
-        (function (window, document, accountId) {
-            var b = document.createElement("script");
-            b.type = "text/javascript";
-            b.src = "https://static.narrativ.com/tags/narrativ-brand.1.0.0.js";
-            b.async = true;
-            b.id = 'nrtvTag';
-            b.setAttribute('data-narrativ-id', accountId);
-            var a = document.getElementsByTagName("script")[0];
-            a.parentNode.insertBefore(b, a);
-        })(window, document, ACCOUNT ID);
-    </script>
+      try {
+        var b = document.createElement("script");
+        b.type = "text/javascript";
+        b.src = "https://static.narrativ.com/tags/narrativ-brand.1.0.0.js";
+        b.async = true;
+        b.id = 'nrtvTag';
+        b.setAttribute('data-narrativ-id', ACCOUNT_ID);
+        var a = document.getElementsByTagName("script")[0];
+        a.parentNode.insertBefore(b, a);
+      } catch (e) {
+        console.log('Howl Checkout Pixel Error: ', e)
+      }
+    }
 
-.. image:: _static/pixel_implementation_screenshots/shopify_implementation_3.png
+
+    // Step 2. Subscribe to customer events using the analytics.subscribe() API
+     analytics.subscribe("checkout_completed", event => {
+       checkoutPixel(event.data);
+     });
+
+.. image:: _static/pixel_implementation_screenshots/shopify_implementation_7.png
+
+Once the code is added, click *Save* on the top right, then click *Connect*. The page should look like this once completed.
+
+.. image:: _static/pixel_implementation_screenshots/shopify_implementation_8.png
+
+Discount Code Logic
+^^^^^^^^^^^^^^^^^^^
+To ensure the tag captures discount codes, include logic that checks for the presence of a discount
+code and applies it proportionally to the ``product_price`` variable. Discount codes do not need to be applied to
+the ``order_value`` variable.
+
 
 Google Tag Manager Implementation
 ---------------------------------
@@ -355,53 +431,61 @@ Create a second tag with a Custom HTML configuration titled **Howl Checkout Tag*
 Javascript snippet in the HTML field (pictured below the snippet). Remember to also replace ``ACCOUNT ID`` with your
 own Howl account id.
 
-**Please note**:
-
-* To ensure the tag captures discount codes, include logic that checks for the presence of a discount code and applies it proportionally to the ``product_price`` variable. Discount codes should not be applied to the ``order_value`` variable.
-
 * ``var purchased`` should be set to the data layer variable corresponding to products purchased at checkout. This can be defined independent of GTM variables (see previous screenshot), or it can be found in the **Variables** section of your Tag Manager dashboard. GTM variables referenced in the checkout tag should be wrapped in doubly curly brackets.
 
 ::
 
     <script type="text/javascript">
-        var purchased = <dataLayerProducts>;
-        var productsPurchased = [];
-        var orderTotal = 0;
-        for (var i = 0; i < purchased.length; i++) {
-          productsPurchased.push({
-            product_id: purchased[i].<ItemID>,
-            product_name: purchased[i].<ItemName>,
-            product_brand: purchased[i].<ItemBrand>,
-            product_size: purchased[i].<ItemSize>,
-            product_color: purchased[i].<ItemColor>,
-            product_price: purchased[i].<ItemPrice>,
-            product_quantity: purchased[i].<ItemQuantity>
-          });
-          orderTotal += (purchased[i].<ItemPrice> * purchased[i].<ItemQuantity>);
-        }
+       var purchased = dataLayer[0].ecommerce.purchase.products;
+       var productsPurchased = [];
+       var orderTotal = 0;
+       for (var i = 0; i < purchased.length; i++) {
+           let finalPrice = parseFloat(purchased[i].price);
 
-        window.NRTV_EVENT_DATA = {
-            page_type: 'checkout',
-            is_new_customer: <isNewCustomer>,
-            products_purchased: productsPurchased,
-            order_id: <OrderID>,
-            order_value: orderTotal,
-            currency: <CurrencyCode>
-        };
+           <!-- Only do this if the product price does not include the discount. -->
+           if (purchased[i].discount) {
+             finalPrice -= parseFloat(purchased[i].discount)
+           }
 
-            (function (window, document, accountId) {
-                var b = document.createElement("script");
-                b.type = "text/javascript";
-                b.src = "https://static.narrativ.com/tags/narrativ-brand.1.0.0.js";
-                b.async = true;
-                b.id = 'nrtvTag';
-                b.setAttribute('data-narrativ-id', accountId);
-                var a = document.getElementsByTagName("script")[0];
-                a.parentNode.insertBefore(b, a);
-            })(window, document, ACCOUNT ID);
+           productsPurchased.push({
+               product_id: purchased[i].product_id,
+               product_name: purchased[i].name,
+               product_brand: purchased[i].brand,
+               product_price: finalPrice.toString(),
+               product_quantity: purchased[i].quantity
+           });
+           orderTotal += (finalPrice * purchased[i].quantity);
+       }
+
+       window.NRTV_EVENT_DATA = {
+             page_type: 'checkout',
+             <!-- isNewCustomer should be a "Variable" set up in your GTM Workspace. -->
+             is_new_customer: {{ IsNewCustomer }},
+             products_purchased: productsPurchased,
+             order_id: dataLayer[0].ecommerce.purchase.order.id,
+             order_value: orderTotal,
+             currency: dataLayer[0].ecommerce.currency_code
+       };
+
+       (function (window, document, accountId) {
+           var b = document.createElement("script");
+           b.type = "text/javascript";
+           b.src = "https://static.narrativ.com/tags/narrativ-brand.1.0.0.js";
+           b.async = true;
+           b.id = 'nrtvTag';
+           b.setAttribute('data-narrativ-id', accountId);
+           var a = document.getElementsByTagName("script")[0];
+           a.parentNode.insertBefore(b, a);
+       })(window, document, ACCOUNT_ID);
     </script>
 
-.. image:: _static/pixel_implementation_screenshots/gtm_5.png
+.. image:: _static/pixel_implementation_screenshots/gtm_6.png
+
+Discount Code Logic
+^^^^^^^^^^^^^^^^^^^
+To ensure the tag captures discount codes, include logic that checks for the presence of a discount
+code and applies it proportionally to the ``product_price`` variable. Discount codes do not need to be applied to
+the ``order_value`` variable.
 
 Select “Checkout Page” as the correct trigger for these events and save your changes. Publish both the Impression &
 Checkout tags to your live environment.
@@ -409,6 +493,6 @@ Checkout tags to your live environment.
 
 .. _Google category: https://support.google.com/merchants/answer/6324436?hl=en
 .. _ISO 4217: https://www.iso.org/iso-4217-currency-codes.html
-.. _Web Implementation: https://docs.narrativ.com/en/stable/tagbrand.html#web-implementation
-.. _Shopify Implementation: https://docs.narrativ.com/en/stable/tagbrand.html#shopify-implementation
-.. _Google Tag Manager Implementation: https://docs.narrativ.com/en/stable/tagbrand.html#google-tag-manager-implementation
+.. _Web Implementation: https://docs.planethowl.com/en/stable/tagbrand.html#web-implementation
+.. _Shopify Implementation: https://docs.planethowl.com/en/stable/tagbrand.html#shopify-implementation
+.. _Google Tag Manager Implementation: https://docs.planethowl.com/en/stable/tagbrand.html#google-tag-manager-implementation
