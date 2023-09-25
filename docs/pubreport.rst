@@ -8,7 +8,7 @@ earnings.
 
 The reports can be published to an FTP/SFTP location or cloud storage bucket (S3/GCS) accessible by the partner.
 
-The reports is published on configurable interval which defaults to 24 hours.
+The reports are published on configurable interval which defaults to 24 hours.
 
 Each interval publishes data for the last 7 days.
 
