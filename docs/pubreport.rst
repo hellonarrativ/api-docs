@@ -179,7 +179,7 @@ To gain a comprehensive view of returns, we recommend aggregating the values for
 checkout_id, merchant and product_id (denoted by the order_product_id column) across all return files.
 
 Since this report is designed to be used to complement the data in the orders reports, the column 'order_product_id'
-can be used to join to the orders report, or one can choose to join to the orders report by using a combination/compound key of the merchant + checkout_id + product_id.
+can be used to join to the orders report.
 
 This table can be used to identify -
 
