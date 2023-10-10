@@ -74,5 +74,11 @@ Please generate and provide us with a public RSA key to register as an authorize
 If you have any questions about product feed requirements, please feel free to reach out to solutions@planethowl.com
 for assistance.
 
+Best Practices
+--------------
+If you do not have an XML or CSV feed, then depending on what platform you use, automation may be available to you.
+
+   * For example, if you use Shopify, then you can use [Product Feed Generator](https://apps.shopify.com/product-feeds-generator).  Once you are configured, send us the Feed URL.
+
 .. _sample file: https://static.bam-x.com/api-docs/samplefeed.csv
 .. _formatting requirements: https://docs.google.com/spreadsheets/d/1cwH1GrNLUy5QyPfK5zIVdvM7Z2e38A7p4BUKugYfru8/edit#gid=0
